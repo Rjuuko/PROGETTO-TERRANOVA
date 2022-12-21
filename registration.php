@@ -4,18 +4,6 @@
         <title>Register</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
         <link rel="stylesheet" href="style/styles.css">
-    </head>
-    <body style=background-color:#2b3031>
-        <form method="post" action="/php/login.php" class="form">
-        <!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            .form-class{
-                margin: 0px 350px 0px 350px;
-                text-align: center
-            }
-        </style>
         <meta charset="utf-8"/>
         <title>
             FIVEHOUSE | Registration
@@ -26,7 +14,7 @@
         </header>
     </head>
     <body style=background-color:#2A4A50>
-        <form style=class:form>
+        <form method="post" action="/php/login.php" class="form">
             <fieldset style=class:fieldset>
                 <legend style=class:legend>
                     <h1 class=text> Register </h1>
