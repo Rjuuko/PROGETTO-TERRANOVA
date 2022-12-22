@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
-        <link rel="stylesheet" href="style/styles.css">
-    </head>
-    <body style=background-color:#2b3031>
-        <form method="post" action="/php/login.php" class="form">
-        <!DOCTYPE html>
-<html>
-    <head>
         <style>
             .form-class{
                 margin: 0px 400px 0px 400px;
@@ -21,7 +12,7 @@
             FIVEHOUSE | Login
         </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans"/>
-        <link rel="stylesheet" type="text/css" href="./style/styles.css"/>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
         <header style=color:white>
         </header>
     </head>

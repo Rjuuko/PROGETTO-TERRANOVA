@@ -1,0 +1,6 @@
+To DO:
+Foreign Key Tra email Anagrafiche e email Login.
+Form registrazione
+Form login
+Display contratti utente
+ 
