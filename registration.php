@@ -4,10 +4,11 @@
         <title>FIVEHOUSE | Registration</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
         <style>
-        <?php include './styles.css'; ?>
+        <?php include './style/styles.css'; ?>
 </style>
     </head>
     <body style=background-color:#2b3031>
+    <script src="terranovajs.js"></script>
         <form style=class:form>
             <fieldset style=class:fieldset>
                 <legend style=class:legend>
@@ -24,9 +25,9 @@
         <pre></pre>
                 <input type="password" id="password" placeholder="Password" name="password" required>
         <pre></pre>
-                <input type="submit" value="Sign up" />
+                <input onmouseover="change_bg(this)" onmouseout="change_bg_back(this)" type="submit" value="Sign up" />
         <pre></pre>
-        <p><a href=login.php class="links">already a partner?</a>
+        <p><a href=login.php class="links" >Already a partner?</a>
             </fieldset>
         </form>
     </body>
