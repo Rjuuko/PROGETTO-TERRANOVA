@@ -4,7 +4,7 @@
         <title>FIVEHOUSE | Login</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
         <style>
-        <?php include './style/styles.css'; ?>
+        <?php include './styles.css'; ?>
 </style>
     </head>
     <body style=background-color:#2b3031>
