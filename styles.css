@@ -14,7 +14,6 @@
     border-bottom-right-radius: 0.2cm;
     border-top-right-radius: 0.2cm;
 }
-
 .text{
     background-color: #2b3031;
     color:#E2F1ED;
@@ -29,6 +28,7 @@
     text-align: center;
 }
 input[type=text] {
+  font-size: xx-small;
   border-color: #3d434500;
   border-top-left-radius: 0.1cm;
   border-bottom-left-radius: 0.1cm;
@@ -36,6 +36,7 @@ input[type=text] {
   border-top-right-radius: 0.1cm;
 }
 input[type=password] {
+  font-size: xx-small;
   border-color: #3d434500;
   border-top-left-radius: 0.1cm;
   border-bottom-left-radius: 0.1cm;
@@ -44,6 +45,7 @@ input[type=password] {
 }
 
 input[type=email] {
+  font-size: xx-small;
   border-color: #3d434500;
   border-top-left-radius: 0.1cm;
   border-bottom-left-radius: 0.1cm;
@@ -52,6 +54,8 @@ input[type=email] {
 }
 
 input[type=submit] {
+  font-size: xx-small;
+  height: fit-content;
   border-color: #3d434500;
   border-top-left-radius: 0.3cm;
   border-bottom-left-radius: 0.3cm;
@@ -61,8 +65,20 @@ input[type=submit] {
   color:#E2F1ED;
 }
 
+a.links{
+  font-size: x-small;
+  color: #E2F1ED;
+  text-align: center;
+  align-self:baseline;
+}
+
 fieldset {
+    width:fit-content;
+    font-size: small;
+    font: lighter;
+    align-content: center;
     align-items: center;
+    text-align: center;
     background-color: #3d4345;
     margin:auto;
     padding: center;
@@ -73,6 +89,7 @@ fieldset {
     align-self:center;
   }
   legend {
+    text-align: center;
     align-items: center;
     color:aliceblue;
     padding: 2px 4px;
