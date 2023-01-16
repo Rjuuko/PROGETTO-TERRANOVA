@@ -24,10 +24,10 @@
         <pre></pre>
                 <input type="password" id="password" placeholder="Password" name="password" required>
         <pre></pre>
-                <input type="submit" value="Send Request" />
+                <input type="submit" value="Sign up" />
         <pre></pre>
+        <p><a href=login.php class="links">already a partner?</a>
             </fieldset>
-                <p style=color:#ffffff>already a partner?<a href=login.php>click me!</a></p>
         </form>
     </body>
 </html>
