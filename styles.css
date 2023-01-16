@@ -1,16 +1,13 @@
-.h1{
-    text-align: center;
-    color:aliceblue;
-    font: bold;
-    align-self: center;
-    align-content: center;
-}
+.body{
+    background-color: #000000;
+  }
+
 .form{
+    align-items: center;
     height: auto;
     width: 205px;
-    margin: auto;
-    background-color: #4F5556;
-    color:#E2F1ED;
+    margin: 0px 0px 0px 0px;
+    background-color: #3d4345;
     text-align: center;
     border-top-left-radius: 0.2cm;
     border-bottom-left-radius: 0.2cm;
@@ -19,6 +16,7 @@
 }
 
 .text{
+    background-color: #2b3031;
     color:#E2F1ED;
     font-size:xx-large;
     font-variant: initial;
@@ -29,32 +27,63 @@
     align-content: center;
     align-items: center;
     text-align: center;
-    align-tracks: center;
 }
+input[type=text] {
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+input[type=password] {
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+
+input[type=email] {
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+
+input[type=submit] {
+  border-color: #3d434500;
+  border-top-left-radius: 0.3cm;
+  border-bottom-left-radius: 0.3cm;
+  border-bottom-right-radius: 0.3cm;
+  border-top-right-radius: 0.3cm;
+  background-color: rgb(0, 145, 255);
+  color:#E2F1ED;
+}
+
 fieldset {
-    margin: 0px;
-    padding: 0px 0px 0px;
+    align-items: center;
+    background-color: #3d4345;
+    margin:auto;
+    padding: center;
     border: 1px solid #666;
     border-radius: 8px;
     box-shadow: 0 0 10px #666;
     padding-top: 10px;
-    align-self:auto;
+    align-self:center;
   }
   legend {
+    align-items: center;
+    color:aliceblue;
     padding: 2px 4px;
-    background: #4F5556;
+    background: #3d434500;
     /* For better legibility against the box-shadow */
   }
   fieldset > legend {
-    float: left;
+    float: center;
 
   }
   fieldset > legend + * {
     clear: both;
   }
 
-  .body{
-    background-color: #2b3031;
-    border: 5px #cccccc solid;
-    border-top:2px #666666 solid;
-  }
