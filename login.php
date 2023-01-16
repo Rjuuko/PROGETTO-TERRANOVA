@@ -18,10 +18,10 @@
         <pre></pre>
                 <input type="password" id="password" placeholder="Password" name="password" required>
                 <pre></pre>
-                <input type="submit" value="Send Request" />
+                <input type="submit" value="Login">
         <pre></pre>
+        <p><a href=registration.php class="links">need an account?</a>
         </fieldset>
-            <p style=color:#ffffff>already a partner?<a href=registration.php>click me!</a></p>
         </form>
     </body>
 </html>
