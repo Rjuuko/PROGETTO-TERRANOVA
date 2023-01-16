@@ -69,6 +69,34 @@ a.links{
   align-self:baseline;
 }
 
+@keyframes border-color {
+  0%   {border-color: red;}
+  10%   {border-color: orange;}
+  20%   {border-color: yellow;}
+  30%   {border-color: yellowgreen;}
+  40%   {border-color: green;}
+  50%   {border-color: cyan;}
+  60%   {border-color: blue;}
+  70%   {border-color: violet;}
+  80%   {border-color: purple;}
+  90%   {border-color: black;}
+  100%   {border-color: red;}
+}
+
+@keyframes box-shadow {
+  0%   {box-shadow: 0 0 10px red;}
+  10%   {box-shadow: 0 0 10px orange;}
+  20%   {box-shadow: 0 0 10px yellow;}
+  30%   {box-shadow: 0 0 10px yellowgreen;}
+  40%   {box-shadow: 0 0 10px green;}
+  50%   {box-shadow: 0 0 10px cyan;}
+  60%   {box-shadow: 0 0 10px blue;}
+  70%   {box-shadow: 0 0 10px violet;}
+  80%   {box-shadow: 0 0 10px purple;}
+  90%   {box-shadow: 0 0 10px black;}
+  100%   {box-shadow: 0 0 10px red;}
+}
+
 fieldset {
     width:fit-content;
     font-size: small;
@@ -78,12 +106,14 @@ fieldset {
     text-align: center;
     background-color: #3d4345;
     margin:auto;
-    padding: center;
-    border: 1px solid #666;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #666;
     padding-top: 10px;
     align-self:center;
+    padding: center;
+    border-radius: 4px;
+    animation-name: border-color;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    box-shadow: 0 0 10px #666;
   }
   legend {
     text-align: center;
