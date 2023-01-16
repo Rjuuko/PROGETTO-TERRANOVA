@@ -1,0 +1,7 @@
+function change_bg(x) {
+    x.style.backgroundColor = "#0078FF";
+  }
+
+function change_bg_back(x) {
+    x.style.backgroundColor = "#0091FF";
+  }
