@@ -15,13 +15,13 @@
                     <h1 style=class:h1> Register </h1>
                 </legend>
 </br>
+<input type="email" id="email" placeholder="email" name="mail" maxlength="50" required>
+        <pre></pre>
                 <input type="text" id="first_name" placeholder="first name" name="name" maxlength="50" required>
         <pre></pre>
                 <input type="text" id="last_name" placeholder="last name" name="surname" maxlength="50" style=class:input-type required>
         <pre></pre>
                 <input type="text" id="username" placeholder="Username" name="username" maxlength="50" required>
-        <pre></pre>
-                <input type="email" id="email" placeholder="email" name="mail" maxlength="50" required>
         <pre></pre>
                 <input type="password" id="password" placeholder="Password" name="password" required>
         <pre></pre>
