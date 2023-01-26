@@ -1,0 +1,302 @@
+@import url(https://pro.fontawesome.com/releases/v5.11.2/css/all.css);
+:root {
+  --user-button-circle: rgba(0, 0, 0, 0.025);
+  --user-button-cardborder: rgba(255, 255, 255, 0.25);
+  --user-button-text: #323133;
+  --user-button-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body #user-button {
+  z-index: 1000;
+  bottom: 1rem !important;
+  right: 1rem !important;
+  color: var(--user-button-text);
+  transition: 1s 0s ease-out;
+  -webkit-animation: slide 3s ease-out forwards;
+  animation: slide 3s ease-out forwards;
+}
+@-webkit-keyframes slide {
+  0%,
+  50% {
+    opacity: 0;
+    display: block !important;
+  }
+  100% {
+    opacity: 1;
+    display: block !important;
+  }
+}
+@keyframes slide {
+  0%,
+  50% {
+    opacity: 0;
+    display: block !important;
+  }
+  100% {
+    opacity: 1;
+    display: block !important;
+  }
+}
+body #user-button .u-card {
+  border-radius: 100%;
+  box-shadow: 0 0 1rem -0.25rem var(--user-button-shadow),
+    inset 0 0 1rem -0.75rem var(--user-button-shadow);
+}
+body #user-button .u-main {
+  cursor: pointer;
+  --user-button-background: var(--user-button-main, #ec87c0);
+}
+body #user-button .u-main img {
+  height: 100%;
+  width: 100%;
+}
+body #user-button .u-main iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4rem;
+  height: 4rem;
+  opacity: 1;
+  transition: 0s 4s;
+}
+body #user-button .u-icons {
+  position: relative;
+  z-index: 950;
+  transform: translate(-50%, -50%);
+  background: var(--user-button-circle);
+  box-shadow: 0 0 0 0.125rem var(--user-button-cardborder);
+  border-radius: 100%;
+  transition: 0.25s;
+  opacity: 1 !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  /*&:before {
+     z-index:-1;
+     position:absolute;
+     top:0; right:0; bottom:0; left:0;
+     content:'';
+     backdrop-filter: blur(10px);
+  }*/
+}
+body #user-button .u-icons a {
+  color: inherit;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+}
+body #user-button .u-icons a div {
+  padding: 0.5rem;
+  transition: 0s;
+}
+body #user-button .u-icons a[href="https://twitter.com/Osorpenke"]
+{
+  position: relative;
+}
+body #user-button .u-icons a[href="https://twitter.com/Osorpenke"]:before
+{
+  content: "Middle Click";
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  border:0 0 1px;
+  background-color: #1da1f2;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  white-space: pre;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease-in;
+  background: #fffc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+body #user-button .u-icons a[href="https://twitter.com/Osorpenke"].show:before
+{
+  opacity: 1;
+  transition: 0.25s ease-out;
+}
+body #user-button .u-icons a[href="https://twitter.com/Osorpenke"] div
+{
+  color: #1da1f2;
+}
+body #user-button .u-icons a[href="https://codepen.io/z-"] div
+{
+  background: black;
+  color: white;
+}
+body #user-button .u-icons a.u-random div {
+  position: relative;
+  top: -1px;
+  -webkit-animation: diespin 2s linear infinite;
+  animation: diespin 2s linear infinite;
+}
+@-webkit-keyframes diespin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes diespin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  transition: 0.25s;
+}
+body.dark {
+  max-height: 100px;
+/* background-image: url('images/wpTerra.jpg'); */
+/* background-size: auto; */
+/* background-position: center; */
+/* background-repeat: no-repeat;
+background-size: cover; */
+  color: white;
+}
+@media (prefers-color-scheme: dark) {
+  body:not(.light) {
+    max-height: 100px;
+background-image: url('images/wpTerra.jpg');
+background-size: auto;
+/* background-position: center; */
+background-repeat: no-repeat;
+background-size: cover;
+    color: rgb(255, 255, 255);
+  }
+}
+
+body .options {
+  margin-top: 10%;
+  margin-left: 400px;
+  position:absolute;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-width: 600px;
+  max-width: 900px;
+  width: calc(100%);
+  height: 400px;
+}
+@media screen and (max-width: 718px) {
+  body .options {
+    min-width: 520px;
+  }
+  body .options .option:nth-child(5) {
+    display: none;
+  }
+}
+@media screen and (max-width: 638px) {
+  body .options {
+    min-width: 440px;
+  }
+  body .options .option:nth-child(4) {
+    display: none;
+  }
+}
+@media screen and (max-width: 558px) {
+  body .options {
+    min-width: 360px;
+  }
+  body .options .option:nth-child(3) {
+    display: none;
+  }
+}
+@media screen and (max-width: 478px) {
+  body .options {
+    min-width: 280px;
+  }
+  body .options .option:nth-child(2) {
+    display: none;
+  }
+}
+body .options .option {
+  position: relative;
+  overflow: hidden;
+  min-width: 50px;
+  margin: 10px;
+  background: var(--optionBackground, var(--defaultBackground, #e6e9ed));
+  background-size: auto 100%;
+  background-position: right;
+  cursor: pointer;
+  border: 1px solid #4CAF50;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+
+body .options .option.active {
+  flex-grow: 10000;
+  transform: scale(1);
+  max-width: 600px;
+  margin: 0px;
+  border-radius: 40px;
+  background-size: auto 100%;
+}
+body .options .option.active .shadow {
+  box-shadow: inset 0 -120px 120px -120px black,
+    inset 0 -120px 120px -100px black;
+}
+body .options .option.active .label {
+  position:normal;
+  bottom: 20px;
+  left: 20px;
+}
+body .options .option.active .label .info > div {
+  left: 0px;
+  opacity: 1;
+}
+body .options .option:not(.active) {
+  flex-grow: 1;
+  border-radius: 30px;
+}
+body .options .option:not(.active) .shadow {
+  bottom: -40px;
+  box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+}
+body .options .option:not(.active) .label {
+  bottom: 10px;
+  left: 10px;
+}
+body .options .option:not(.active) .label .info > div {
+  left: 20px;
+  opacity: 0;
+}
+body .options .option .shadow {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 120px;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+}
+body .options .option .label {
+  padding:70px;
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  height: 40px;
+  transition: 0.5s cubic-bezier(0.0, 0.0, 0.0, 0.0);
+}
+body .options .option .label .info > div {
+  position: center;
+  transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity 0.5s ease-out;
+}
+body .options .option .label .info .main {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+body .options .option .label .info .sub {
+  transition-delay: 0.1s;
+}
