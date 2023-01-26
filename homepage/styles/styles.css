@@ -1,0 +1,670 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap");
+:root {
+  --card-largura: 200px;
+  --card-altura: 300px;
+  --card-duracao-transicao: 800ms;
+  --card-transicao-tipo-saida: ease;
+}
+
+
+
+body {
+  margin:0;
+  padding:0;	
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+  border: none;
+}
+
+.conteudo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.conteudo__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+.conteudo__background::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1;
+  opacity: 0.8;
+}
+.conteudo__backgorund__imagem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateX(var(--image-translate-offset, 0));
+  width: 100%;
+  height: 100%;
+  transition: transform 1000ms ease, opacity 1000ms ease;
+  overflow: hidden;
+}
+.conteudo__backgorund__imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.conteudo__backgorund__imagem.imagem--corrente {
+  opacity: 1;
+  --image-translate-offset: 0;
+}
+.conteudo__backgorund__imagem.imagem--anterior,
+.conteudo__backgorund__imagem.imagem--proxima {
+  opacity: 0;
+}
+.conteudo__backgorund__imagem.imagem--anterior {
+  --image-translate-offset: -25%;
+}
+.conteudo__backgorund__imagem.imagem--proxima {
+  --image-translate-offset: 25%;
+}
+
+.lista__cards {
+  position: absolute;
+  width: calc(3 * var(--card-largura));
+  height: auto;
+}
+.lista__cards__btn {
+  --btn-size: 35px;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+.lista__cards__btn.btn-esquerda {
+  left: -5%;
+}
+.lista__cards__btn.btn--direita {
+  right: -5%;
+}
+.lista__cards__btn .icone {
+  width: 100%;
+  height: 100%;
+}
+.lista__cards__btn .icone svg {
+  width: 100%;
+  height: 100%;
+}
+.lista__cards .conteudo__cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.card {
+  --card-translateY-offset: 100vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateX(var(--card-translateX-offset))
+    translateY(var(--card-translateY-offset))
+    rotateY(var(--card-rotation-offset)) scale(var(--card-scale-offset));
+  display: inline-block;
+  width: var(--card-largura);
+  height: var(--card-altura);
+  transition: transform var(--card-duracao-transicao)
+    var(--card-transicao-tipo-saida);
+  user-select: none;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 1;
+  transition: opacity var(--card-duracao-transicao)
+    var(--card-transicao-tipo-saida);
+  opacity: calc(1 - var(--opacity));
+}
+.imagem--card {
+  
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.imagem--card img {
+  
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card.card--corrente {
+  --current-card-rotation-offset: 0;
+  --card-translateX-offset: 0;
+  --card-rotation-offset: var(--current-card-rotation-offset);
+  --card-scale-offset: 1.2;
+  --opacity: 0.8;
+}
+.card.card--anterior {
+  --card-translateX-offset: calc(-1 * var(--card-largura) * 1.1);
+  --card-rotation-offset: 25deg;
+}
+.card.card--proximo {
+  --card-translateX-offset: calc(var(--card-largura) * 1.1);
+  --card-rotation-offset: -25deg;
+}
+.card.card--anterior,
+.card.card--proximo {
+  --card-scale-offset: 0.9;
+  --opacity: 0.4;
+}
+
+.listagem__informacoes {
+  position: absolute;
+  width: calc(3 * var(--card-largura));
+  height: var(--card-altura);
+  pointer-events: none;
+}
+.listagem__informacoes .conteudo__informacoes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.info {
+  margin-bottom: calc(var(--card-altura) / 8);
+  margin-left: calc(var(--card-largura) / 1.5);
+  transform: translateZ(2rem);
+  transition: transform var(--card-duracao-transicao)
+    var(--card-transicao-tipo-saida);
+}
+.info .texto {
+  position: relative;
+  font-family: "Poppins";
+  font-size: calc(var(--card-largura) * var(--texto-size-offset, 0.2));
+  white-space: nowrap;
+  color: #fff;
+  width: fit-content;
+}
+.info .nome,
+.info .localizacao {
+  text-transform: uppercase;
+}
+.info .localizacao {
+  font-weight: 800;
+}
+.info .localizacao {
+  --mg-left: 40px;
+  --texto-size-offset: 0.12;
+  font-weight: 600;
+  margin-left: var(--mg r-left);
+  margin-bottom: calc(var(--mg-left) / 2);
+  padding-bottom: 0.8rem;
+}
+.info .localizacao::before,
+.info .localizacao::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  transform: translate(calc(-1 * var(--mg-left)), -50%);
+}
+.info .localizacao::after {
+  bottom: 0;
+  width: 60px;
+  height: 2px;
+}
+.info .descricao {
+  --texto-size-offset: 0.065;
+  font-weight: 500;
+}
+.info.informacoes__corrente {
+  opacity: 1;
+  display: block;
+}
+.info.informacoes__anterior,
+.info.informacoes__seguinte {
+  opacity: 0;
+  display: none;
+}
+
+.conteudo__carregamento {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  z-index: 200;
+}
+
+.conteudo__carregamento .carregamento {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: 3px solid #009739;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  :root {
+    --card-largura: 250px;
+    --card-altura: 400px;
+  }
+}
+
+
+
+
+
+/* CSS Document */
+/* -
+Autore:Andrea Biagi,
+email:andreabiagi88@gmail.com
+sito web: www.chefstudio.it
+Licenza: http://creativecommons.org/licenses/by/4.0/
+Pagina di riferimento e guida: https://www.chefstudio.it/menu-a-tendina-html-css-responsive-per-mobile-e-desktop-senza-javascript-download.html
+-*/
+/* -------------reset----------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+input:focus, button:focus {outline:0;}
+
+img {
+    vertical-align: middle;
+}
+
+a{
+	text-decoration:none;
+}
+
+ul li{ 
+	list-style:none;
+  align-items: left;
+  border: 3px solid #73AD21;
+}
+
+html,body{
+	font-family: 'Roboto Slab', serif;
+	color:#666 /*color-text*/;
+	height:100%;
+	width:100%;
+}
+
+h1{
+	font-size: 1.5em;
+	text-align:left;
+	font-weight: bold;
+	color:#A24038/* primary color*/;
+}
+
+/* -----------------contenitore e contenuto ------------------ */
+
+.contenitore .contenuto{
+	max-width:1200px;
+	margin:auto;
+	padding: 70px 10px;
+}
+
+.contenitore .contenuto a{
+  position:flex;
+  top:0px;
+	color:#A24038/* primary color*/;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.contenitore .contenuto a:hover{
+	color:#B3453E/* primary lightcolor*/;
+}
+
+/* -----------------Menu nella versione mobile-----------------*/
+
+.active{
+	color:#FFFFFF/* primary super-lightcolor*/;
+	background-color: #B3453E/* primary lightcolor*/;
+}
+	
+.active-dropdown{
+	color:#FFFFFF /* primary super-lightcolor*/;
+	background-color:#B3453E/* primary lightcolor*/;
+}
+
+nav{
+	height:100%;
+	background-color:#A24038;/* primary lightcolor* /* sfondo menu mobile*/
+	position:absolute;
+  top:-8px;
+	width:100%;
+	margin-top:54px;
+	visibility:hidden;
+	overflow:auto;/* permette lo scroll quando il menu è aperto*/
+	   
+}
+
+nav ul{
+	padding-bottom:54px;
+}
+
+nav ul li a {
+	padding: 16px 0 16px 32px;
+	display:block;
+	color:#fbfafa;
+	font-size:16px;
+	transition: background-color 0.3s ease;
+}
+
+.submenu{
+	color:#FF6759 /* primary super-lightcolor*/;
+	padding-left: 55px;
+	padding-bottom: 5px;
+}
+
+nav ul li ul {
+	padding-left:0; 
+	padding-bottom:0;
+}
+
+nav ul li ul li a {
+	font-size:16px;
+	padding:10px 0 10px 55px;
+	border:hidden; 
+}
+
+.lingua{
+	border-top: 1px solid #B3453E/* primary lightcolor*/; 
+}
+
+.lingua > a::before{
+	content: url(img/earth-globe.svg);
+	margin-right: 5px;
+}
+
+/* ----------------- div bar per l'attivazione del menu ------------------ */
+
+#bar{
+	background-color: #A24038 /* primary color*/; 
+	height:54px;
+	width:100%;
+	z-index:2;
+	position:absolute;
+  top:0px;
+	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.4);
+}
+
+#bar #logo{
+	float:right;
+	margin-right:12px;
+}
+
+/* ----------------- Hamburger animation ------------------ */
+
+#hamburger {
+  display: none;
+}
+
+.menuicon {
+  top:0px;
+ 	position:fixed;
+	height:54px;
+	width:54px;
+	margin-left:5px;
+	z-index:3;
+}
+
+.menuicon  span {
+    display: block;
+    top: 25px;
+    width: 40px;
+    height:3px;
+    left:8px;
+    background-color: #fff;
+    position: relative;
+	  border-radius:20px;
+    transition-duration: 0;  
+    transition-delay: .1s;
+}
+    
+.menuicon  span::after, .menuicon  span::before {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 40px;
+    height:3px;
+	  border-radius:20px;
+    transition-duration: .1s;
+	  -webkit-transition-delay: .1s, 0;
+    transition-delay: .1s, 0;
+}
+.menuicon  span::before {
+      margin-top: -10px;
+}
+.menuicon  span::after {
+      margin-top: 10px;
+}
+
+#hamburger:checked ~ .menuicon span{
+    background-color: rgba(0,0,0,0);
+}
+    
+#hamburger:checked ~ .menuicon span::before {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+	
+#hamburger:checked ~ .menuicon span::after {
+      margin-top: 0px;
+      -webkit-transition-delay: 0, .3s;
+      -moz-transition-delay: 0, .3s;
+      -ms-transition-delay: 0,.3s;
+      -o-transition-delay: 0, .3s;
+      transition-delay: 0, .3s;
+}
+
+#hamburger:checked ~ .menuicon span::before {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+#hamburger:checked ~ .menuicon span::after {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+/* ----------------- menu animation faccio apparire il menu ------------------ */
+
+#hamburger:checked ~ .menu-visibility {
+	visibility:visible;
+}
+
+/* -----------------media per menu orizzontale ------------------ */
+
+@media screen and (min-width: 980px){
+	
+.menuicon{
+	display:none; /* togliere icona hambuger icon */
+}
+	
+#bar #logo{
+	float:left;
+	margin-left:12px;
+}
+
+nav{
+	z-index:3;
+	margin-top:19px;
+	height:auto;
+	background-color:transparent;
+	transition:none;
+	width:auto;
+	float:right;
+	right:12px;
+	visibility:visible;
+	font-family:'Roboto Slab', serif;
+	overflow:inherit;
+}
+
+.active{
+	background-color:transparent;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+	
+.active-dropdown{
+	color:#fff;
+	background-color:#B3453E/* primary lightcolor*/;
+}
+
+nav ul{
+	padding:0;
+}
+	
+nav ul li a {
+	padding:0;
+	display:inline;
+	font-size:16px;
+	color: #fff;
+}
+
+nav ul li a:hover {
+	background-color:transparent;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+	
+.submenu{
+	padding-left: 0;
+	color:#FFFFFF;
+}
+
+nav ul li {	
+	margin:0;
+	float:left;
+	position:relative;
+	padding:0 16px;
+}
+
+.submenu::after{
+	content: url(img/arrow-down.svg);
+	float: right;
+	padding-left: 6px;
+}
+	
+/* ----------------- dropdown - attivare il menu a tendina ------------------ */
+	
+nav ul li ul { 
+	position:fixed;
+	height:0;
+	overflow:hidden;
+	background-color: #A24038 /* primary color*/
+}
+	
+nav ul li:hover ul{
+	height:auto;
+	padding-top: 14px;
+	position: absolute;
+    right: 0;	
+}
+
+nav ul li ul li {
+	font-size: 14px;
+	font-weight: normal;
+	float:none;
+	padding:0;
+	min-width: 160px;
+	border-top: 1px solid #B3453E/* primary lightcolor*/;
+}
+
+nav ul li ul li a {
+	padding: 16px 32px;
+	display: block;
+	background-color: #A24038/* primary color*/;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+nav ul li ul li a:hover {
+	background-color:#B3453E/* primary lightcolor*/;
+	color:#FF6759 /* primary super-lightcolor*/;
+}
+
+.lingua{
+	border-top: 0;
+	border-left: solid 1px #fff;
+	float: left;
+}
+
+}
