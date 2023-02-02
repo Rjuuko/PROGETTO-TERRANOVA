@@ -1,0 +1,226 @@
+.form{
+    align-items: center;
+    height: auto;
+    width: 205px;
+    margin: 0px 0px 0px 0px;
+    background-color: #3d4345;
+    text-align: center;
+    border-top-left-radius: 0.2cm;
+    border-bottom-left-radius: 0.2cm;
+    border-bottom-right-radius: 0.2cm;
+    border-top-right-radius: 0.2cm;
+}
+.text{
+    background-color: #2b3031;
+    color:#E2F1ED;
+    font-size:xx-large;
+    font-variant: initial;
+    font-style: oblique;
+    text-decoration: none;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+input[type=text] {
+  font-size: large;
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+input[type=password] {
+  font-size: large;
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+
+input[type=email] {
+  margin-top: 10%;
+  font-size: large;
+  border-color: #3d434500;
+  border-top-left-radius: 0.1cm;
+  border-bottom-left-radius: 0.1cm;
+  border-bottom-right-radius: 0.1cm;
+  border-top-right-radius: 0.1cm;
+}
+
+input[type=submit] {
+  box-sizing: 200%;
+  font-size:medium;
+  border-color: #3d434500;
+  border-top-left-radius: 0.3cm;
+  border-bottom-left-radius: 0.3cm;
+  border-bottom-right-radius: 0.3cm;
+  border-top-right-radius: 0.3cm;
+  background-color: rgb(0, 145, 255);
+  color:#E2F1ED;
+  box-shadow: 0 0 7px rgb(79, 147, 181);
+}
+
+input[type=button] {
+  width: 100%;
+  font-size:medium;
+  border-color: #00000000;
+  border-top-left-radius: 0.3cm;
+  border-bottom-left-radius: 0.3cm;
+  border-bottom-right-radius: 0.3cm;
+  border-top-right-radius: 0.3cm;
+  background-color: rgba(255, 255, 255, 0);
+  color:#282e2c;
+}
+
+
+/* CSS Document */
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body{
+max-height: 100px;
+background-image: url('images/wpTerra_scurita.jpg');
+background-size: auto;
+/* background-position: center; */
+background-repeat: no-repeat;
+background-size: cover;
+margin:0;
+padding:0;	
+font-family: 'Lato', sans-serif;
+}
+header{
+width:100%;
+margin:0 auto;
+
+}
+/*			MAIN	*/
+.main{
+width:100%;
+	margin:0 auto;
+}
+
+.h1{
+	text-align:center;
+	font-size:7em;
+	color:rgba(255,255,255,0.8);
+	line-height:400px;
+	font-weight:bold;
+	font-family: 'Lato', sans-serif;
+}
+
+a.links{
+  font-size: normal;
+  color: #e2edf1;
+}
+
+@keyframes border-color {
+  0%   {border-color: red;}
+  10%   {border-color: orange;}
+  20%   {border-color: yellow;}
+  30%   {border-color: yellowgreen;}
+  40%   {border-color: green;}
+  50%   {border-color: cyan;}
+  60%   {border-color: blue;}
+  70%   {border-color: violet;}
+  80%   {border-color: purple;}
+  90%   {border-color: black;}
+  100%   {border-color: red;}
+}
+
+@keyframes box-shadow {
+  0%   {color: red;}
+  10%   {color: orange;}
+  20%   {color: yellow;}
+  30%   {color: yellowgreen;}
+  40%   {color: green;}
+  50%   {color: cyan;}
+  60%   {color: blue;}
+  70%   {color: violet;}
+  80%   {color: 0 0 10px purple;}
+  90%   {color: 0 0 10px black;}
+  100%   {color: 0 0 10px red;}
+}
+
+
+fieldset {
+    height: 500px;
+    width: 500px;
+    font-size: larger;
+    font: lighter;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #0000004e;
+    margin: 100px auto;
+    padding-top: 10px;
+    align-self:center;
+    padding: center;
+    border-radius: 10px;
+    animation-name: border-color;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    color: #666;
+  }
+  legend {
+    font-family: Arial, Helvetica, sans-serif;
+    animation-name: box-shadow;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    font-family: 'Courier New', Courier, monospace;
+
+    text-align: center;
+    align-items: center;
+    color:rgb(34, 255, 0);
+    padding: 2px 4px;
+    background: #3d434500;
+    /* For better legibility against the box-shadow */
+  }
+  fieldset > legend {
+    float: center;
+
+  }
+  fieldset > legend + * {
+    clear: both;
+  }
+
+
+  .conteudo__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .conteudo__backgorund__imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .conteudo__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+  }
+
