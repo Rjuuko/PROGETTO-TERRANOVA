@@ -42,7 +42,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);?>
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
               <div class="card-body py-5 px-md-5">
-                <form>
+                <form method="POST" action='authentication.php'>
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Login
