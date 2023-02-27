@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>FIVEHOUSE | Opzioni di accesso</title>
+    <title>FIVEHOUSE | Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
 
@@ -17,13 +17,10 @@
     .row{
         background-color:linear-gradient(#e66465, #9198e5);
     }
-    .form-control{
-        flex:row;
-    }
 </style>
     
 
-<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body>
 <?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
