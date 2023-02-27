@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>FIVEHOUSE | Registrazione</title>
+    <title>FIVEHOUSE | Opzioni di accesso</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
 
@@ -18,16 +18,27 @@
         background-color:linear-gradient(#e66465, #9198e5);
     }
     .form-control{
-        flex:row;
+        width: fit-content;
+    }
+    .card{
+      width:63vw;
     }
 </style>
     
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body>
 <?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
     echo "<h1>Benvenuto, " . $_REQUEST['username'] . "</h1>";}?>
+
+<?php function db_connect() {
+    $servername = "";
+    $username = "";
+    $password = "";
+    $dbname = "";
+}
+$conn = mysqli_connect($servername, $username, $password, $dbname);?>
 
 <section class="section">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
@@ -39,8 +50,7 @@
                 <form>
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Registrazione
-                            </h1>
+                            <h4 class="my-5 display-3 fw-bold ls-tight"> Form di Registrazione</h4>
                           </div>
                     </legend>
                   <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -55,13 +65,9 @@
                     <label class="form-label" for="form3Example4">Cognome</label>
                     <input type="text" id="form3Example4" class="form-control" />
 
-
-
                     <label class="form-label" for="form3Example3">Indirizzo Email</label>
                     <input type="email" id="form3Example3" class="form-control" />
 
-  
-                  <!-- Password input -->
                     <label class="form-label" for="form3Example4">Password</label>
                     <input type="password" id="form3Example4" class="form-control" />
 
@@ -73,8 +79,9 @@
   
                   <!-- Submit button -->
                   <button type="submit" class="btn btn-primary btn-block mb-4">
-                    Sign up
+                    Log in
                   </button>
+                  <p><a href=login.php class="links">Already have an account?</a>
   
                   <!-- Register buttons -->
                   </div>
