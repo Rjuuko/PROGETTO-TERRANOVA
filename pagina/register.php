@@ -17,16 +17,13 @@
     .row{
         background-color:linear-gradient(#e66465, #9198e5);
     }
-    .form-control{
-        width: fit-content;
-    }
     .card{
       width:63vw;
     }
 </style>
     
 
-<link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body>
 <?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
