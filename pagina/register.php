@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>FIVEHOUSE | Opzioni di accesso</title>
+    <title>FIVEHOUSE | Registrazione</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
 
@@ -39,7 +39,7 @@
                 <form>
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Login
+                            <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Registrazione
                             </h1>
                           </div>
                     </legend>
