@@ -29,6 +29,15 @@
 <?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
     echo "<h1>Benvenuto, " . $_REQUEST['username'] . "</h1>";}?>
 
+<?php function db_connect() {
+    $servername = "";
+    $username = "";
+    $password = "";
+    $dbname = "";
+}
+$conn = mysqli_connect($servername, $username, $password, $dbname);?>
+
+
 <section class="section">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
       <div class="container">
