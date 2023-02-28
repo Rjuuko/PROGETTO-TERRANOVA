@@ -26,16 +26,12 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body>
-<?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
-    echo "<h1>Benvenuto, " . $_REQUEST['username'] . "</h1>";}?>
-
-<?php function db_connect() {
-    $servername = "";
-    $username = "";
-    $password = "";
-    $dbname = "";
-}
-$conn = mysqli_connect($servername, $username, $password, $dbname);?>
+<?php 
+  session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['password'])){
+    header("location: index.html");
+  }
+?>
 
 <section class="section">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
@@ -51,14 +47,15 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);?>
                           </div>
                     </legend>
                   <!-- 2 column grid layout with text inputs for the first and last names -->
-  
                   <!-- Email input -->
                   
                   <div class="form-outline mb-4">
 
+                  <!-- facoltativo dato che nel db nome può essere null -->
                     <label class="form-label" for="form3Example4">Nome</label>
                     <input type="text" id="form3Example4" class="form-control" />
 
+                  <!-- facoltativo dato che nel db il cognome può essere null -->
                     <label class="form-label" for="form3Example4">Cognome</label>
                     <input type="text" id="form3Example4" class="form-control" />
 
@@ -68,6 +65,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);?>
                     <label class="form-label" for="form3Example4">Password</label>
                     <input type="password" id="form3Example4" class="form-control" />
 
+                    <!-- facoltativo dato che nel db numero di telefono può essere null -->
                     <label class="form-label" for="form3Example4">numero di telefono</label>
                     <input type="text" id="form3Example4" class="form-control" />
                   </div>
