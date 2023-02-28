@@ -9,9 +9,8 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
     <title>FIVEHOUSE | Login</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
-
+    
     
 <style>
     .row{
@@ -23,17 +22,12 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body>
-<?php if(isset($_REQUEST['username']) and isset($_REQUEST['password'])) {
-    echo "<h1>Benvenuto, " . $_REQUEST['username'] . "</h1>";}?>
-
-<?php function db_connect() {
-    $servername = "";
-    $username = "";
-    $password = "";
-    $dbname = "";
-}
-$conn = mysqli_connect($servername, $username, $password, $dbname);?>
-
+<?php 
+  session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['password'])){
+    header("location: index.html");
+  }
+?>
 
 <section class="section">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
@@ -42,7 +36,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);?>
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
               <div class="card-body py-5 px-md-5">
-                <form method="POST" action='login/authentication.php'>
+                <form method="POST" action='login/authentication.php' onSubmit="return checkLogin(this)">
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Login
@@ -50,16 +44,33 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);?>
                           </div>
                     </legend>
                   <!-- 2 column grid layout with text inputs for the first and last names -->
-  
+                  
+                  <!-- box of eventual errors -->
+                  <?php 
+                  if(isset($_REQUEST['e'])){
+                  ?>
+                  <div class="" id="errbox">
+                    <p id="jserror"></p>
+                  <?php
+                    if($_REQUEST['e'] == 1){
+                  ?>
+                      <!-- Inserisci testo in caso di email sbagliata -->
+                  <?php }elseif($_REQUEST['e'] == 2){?>
+                      <!-- Inserisci testo in caso di password sbagliata -->
+                  <?php }?> 
+                  </div>
+                  <?php }?>
+
+
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control" />
+                    <input type="email" id="form3Example3" class="form-control" name="email" />
                     <label class="form-label" for="form3Example3">Email address</label>
 
   
                   <!-- Password input -->
 
-                    <input type="password" id="form3Example4" class="form-control" />
+                    <input type="password" id="form3Example4" class="form-control" name="passwd" />
                     <label class="form-label" for="form3Example4">Password</label>
                   </div>
   

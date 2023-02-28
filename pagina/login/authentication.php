@@ -17,21 +17,18 @@
                 $_SESSION['userID'] = $row['id'];
                 $_SESSION['email'] = $email;
                 $_SESSION['passwd'] = $password;
-                echo "ciao";
-                //header("Location: ")
+                header("Location: ../index.html");
 
             }else{
-                echo "balls";
+                header("Location: ../login.php?e=2");
                 // errore password sbagliata
                 exit;
             }  
         }else{
-            echo "pallette";
+            header("Location: ../login.php?e=1");
             // errore email non trovata
             exit;
-        }
-        
-        
+        } 
     }
 
 
