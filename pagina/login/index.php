@@ -10,8 +10,8 @@
     <h1> Login </h1>   
     <div id="FormDiv">
         <form method="POST" action='authentication.php'>
-            <label for="name" > Nome Utente </label> <br>
-            <input type="text" id="name" name="name" placeholder="Nome Utente" > <br> 
+            <label for="email" > Nome Utente </label> <br>
+            <input type="text" id="email" name="email" placeholder="Nome Utente" > <br> 
             <label for="passwd">Password </label> <br>
             <input type="password" id="passwd" name="passwd" placeholder="Password"> <br>
             <input type="submit" value="login" class="button">
