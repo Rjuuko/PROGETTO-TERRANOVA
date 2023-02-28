@@ -1,6 +1,8 @@
 To DO:
 Foreign Key Tra email Anagrafiche e email Login.
-Form registrazione
-Form login
-Display contratti utente
- 
+Form registrazione -completato
+Form login -completato
+Display contratti utente -completato
+implementazione php tra pagine di accesso
+implementazione del database tramite php
+test di prova del corretto funzionamento delle pagine di registrazione e login
