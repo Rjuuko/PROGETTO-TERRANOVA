@@ -4,7 +4,7 @@
     $email = $connessione->real_escape_string($_REQUEST['email']);
     $password = $connessione->real_escape_string($_REQUEST['passwd']);
     if(!is_null($email)){
-        $stmt = $connessione->prepare("SELECT * FROM `utenti` WHERE email =?");
+        $stmt = $connessione->prepare("SELECT * FROM `login` WHERE email =?");
 
         $stmt->bind_param("s", $email);
         $stmt->execute();

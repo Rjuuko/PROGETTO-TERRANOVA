@@ -40,7 +40,7 @@
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
               <div class="card-body py-5 px-md-5">
-                <form>
+                <form method="POST" action="login/registration.php" >
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <h4 class="my-5 display-3 fw-bold ls-tight"> Form di Registrazione</h4>
@@ -60,14 +60,14 @@
                     <input type="text" id="form3Example4" class="form-control" />
 
                     <label class="form-label" for="form3Example3">Indirizzo Email</label>
-                    <input type="email" id="form3Example3" class="form-control" />
+                    <input type="email" id="form3Example3" class="form-control" name="email" />
 
                     <label class="form-label" for="form3Example4">Password</label>
-                    <input type="password" id="form3Example4" class="form-control" />
+                    <input type="password" id="form3Example4" class="form-control" name="passwd"/>
 
                     <!-- facoltativo dato che nel db numero di telefono può essere null -->
                     <label class="form-label" for="form3Example4">numero di telefono</label>
-                    <input type="text" id="form3Example4" class="form-control" />
+                    <input type="password" id="form3Example4" class="form-control" name="passwdconf" />
                   </div>
   
                   <!-- Checkbox -->
