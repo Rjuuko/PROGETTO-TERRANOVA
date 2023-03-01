@@ -59,7 +59,7 @@
                 <form method="POST" action='login/authentication.php' onSubmit="return checkLogin(this)">
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h1 class="my-5 display-3 fw-bold ls-tight"> Form di Login
+                            <h1 class="my-5 display-3 fw-bold ls-tight">Login
                             </h1>
                           </div>
                     </legend>
@@ -92,14 +92,15 @@
 
                   <!-- Email input -->
                   <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3" class="form-control" name="email" />
                     <label class="form-label" for="form3Example3">Email address</label>
+                    <input type="email" id="form3Example3" class="form-control" name="email" />
+                    
 
   
                   <!-- Password input -->
-
-                    <input type="password" id="form3Example4" class="form-control" name="passwd" />
                     <label class="form-label" for="form3Example4">Password</label>
+                    <input type="password" id="form3Example4" class="form-control" name="passwd" />
+                    
                   </div>
   
                   <!-- Checkbox -->
@@ -108,7 +109,7 @@
                   <button type="submit" class="btn btn-primary btn-block mb-4">
                     Log in
                   </button>
-                  <p><a href=register.php class="links">Need an account?</a>
+                  <p><a href=register.php class="links">Non hai un account? registrati qui!</a>
   
                   <!-- Register buttons -->
                   </div>

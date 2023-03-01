@@ -43,7 +43,7 @@
                 <form method="POST" action="login/registration.php" >
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h4 class="my-5 display-3 fw-bold ls-tight"> Form di Registrazione</h4>
+                            <h4 class="my-5 display-3 fw-bold ls-tight">Registrazione</h4>
                           </div>
                     </legend>
                   <!-- 2 column grid layout with text inputs for the first and last names -->
@@ -51,13 +51,13 @@
                   
                   <div class="form-outline mb-4">
 
-                  <!-- facoltativo dato che nel db nome può essere null -->
+                  <!-- facoltativo dato che nel db nome può essere null
                     <label class="form-label" for="form3Example4">Nome</label>
                     <input type="text" id="form3Example4" class="form-control" />
 
-                  <!-- facoltativo dato che nel db il cognome può essere null -->
+                 facoltativo dato che nel db il cognome può essere null 
                     <label class="form-label" for="form3Example4">Cognome</label>
-                    <input type="text" id="form3Example4" class="form-control" />
+                    <input type="text" id="form3Example4" class="form-control" /> -->
 
                     <label class="form-label" for="form3Example3">Indirizzo Email</label>
                     <input type="email" id="form3Example3" class="form-control" name="email" />
@@ -66,7 +66,7 @@
                     <input type="password" id="form3Example4" class="form-control" name="passwd"/>
 
                     <!-- facoltativo dato che nel db numero di telefono può essere null -->
-                    <label class="form-label" for="form3Example4">numero di telefono</label>
+                    <label class="form-label" for="form3Example4">Conferma password</label>
                     <input type="password" id="form3Example4" class="form-control" name="passwdconf" />
                   </div>
   
@@ -74,9 +74,9 @@
   
                   <!-- Submit button -->
                   <button type="submit" class="btn btn-primary btn-block mb-4">
-                    Log in
+                    Registrati
                   </button>
-                  <p><a href=login.php class="links">Already have an account?</a>
+                  <p><a href=login.php class="links">Hai già un account? Accedi ora!</a>
   
                   <!-- Register buttons -->
                   </div>

@@ -29,5 +29,5 @@
 
     $stmt->execute();
 
-    header("Location:../login.php")
+    header("Location:../login.php?newAcc=1")
 ?>
