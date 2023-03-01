@@ -74,13 +74,13 @@
                       <!-- Inserisci testo in caso di email sbagliata -->
                     <div class="alert">
                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                      <strong>Errore</strong> Password errata!
+                      <strong>Errore</strong>. Indirizzo E-mail errato!
                      </div>
                   <?php }elseif($_REQUEST['e'] == 2){?>
                       <!-- Inserisci testo in caso di password sbagliata -->
                     <div class="alert">
                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                      <strong>Errore</strong> Password errata!
+                      <strong>Errore</strong>. Password errata!
                      </div>
                   <?php }?> 
                   </div>
