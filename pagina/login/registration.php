@@ -16,8 +16,7 @@
     $result = $stmt->get_result();
 
     if(mysqli_num_rows($result) >= 1 ){
-        $_SESSION['regerr'] = 2;
-        header("location: ./register.php"); // ritorno sul form perchè il nome utente è gia in uso
+        header("location: ../register.php?e=1"); // ritorno sul form perchè il nome utente è gia in uso
         exit;
     }
 
