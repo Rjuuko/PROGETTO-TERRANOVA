@@ -38,7 +38,10 @@
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
-<body>
+<body onload="displayalert()">
+
+
+
 <?php 
   session_start();
   if(isset($_SESSION['email']) && isset($_SESSION['password'])){
@@ -117,5 +120,16 @@
       </div>
     </div>
   </section>
+
+  <script>
+      function displayalert(){
+        let check = <?php echo  isset($_REQUEST['newAcc']);?> 
+        console.log(check)
+        if(check){
+          alert("Account creato con successo!");
+        }
+      }
+
+    </script>
 </body>
 </html>

@@ -29,6 +29,6 @@
 
     $stmt->execute();
 
-    header("Location:../login.php")
-    echo '<script>alert("Account creato con successo!");</script>';
+    header("Location:../login.php?newAcc=1");
+
 ?>
