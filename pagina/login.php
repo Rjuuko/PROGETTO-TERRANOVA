@@ -13,8 +13,25 @@
     
     
 <style>
-    .row{
-        background-color:linear-gradient(#e66465, #9198e5);
+    div.alert {
+      padding: 20px;
+      background-color: red;
+      color: white;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
     }
 </style>
     
@@ -55,8 +72,16 @@
                     if($_REQUEST['e'] == 1){
                   ?>
                       <!-- Inserisci testo in caso di email sbagliata -->
+                    <div class="alert">
+                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                      <strong>Errore</strong> Password errata!
+                     </div>
                   <?php }elseif($_REQUEST['e'] == 2){?>
                       <!-- Inserisci testo in caso di password sbagliata -->
+                    <div class="alert">
+                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                      <strong>Errore</strong> Password errata!
+                     </div>
                   <?php }?> 
                   </div>
                   <?php }?>
