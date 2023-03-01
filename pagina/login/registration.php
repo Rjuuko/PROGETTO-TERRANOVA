@@ -21,9 +21,7 @@
     }
 
     $stmt = $connessione->prepare("INSERT INTO login(email, password) VALUES (?, ?)");
-    <script>
-        Alert("Account creato con successo!");
-    </script>
+    cho '<script>alert("Account creato con successo!");</script>';
     $passwd =  password_hash($password, PASSWORD_DEFAULT); // creo la password criptata
 
     echo $email;
