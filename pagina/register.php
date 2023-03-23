@@ -43,7 +43,7 @@
                 <form method="POST" action="login/registration.php" >
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
-                            <h4 class="my-5 display-3 fw-bold ls-tight">Registrazione</h4>
+                            <h4 class="my-5 display-3 fw-bold ls-tight">Form di registrazione</h4>
                           </div>
                     </legend>
                   <!-- 2 column grid layout with text inputs for the first and last names -->

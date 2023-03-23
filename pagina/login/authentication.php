@@ -16,8 +16,7 @@
                 
                 $_SESSION['userID'] = $row['id'];
                 $_SESSION['email'] = $email;
-                $_SESSION['passwd'] = $password;
-                header("Location: ../index.html");
+                header("Location: ../index.php");
 
             }else{
                 header("Location: ../login.php?e=2");

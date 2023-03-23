@@ -1,4 +1,18 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['email'])){
+    header("Location: login.php");
+  }
+  require("../config.php");
+  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
+  $stmt = $connessione->prepare($sql); 
+  $stmt->bind_param("s", $_SESSION['email']);
+  $stmt->execute();
+  $result = $stmt->get_result();
 
+ 
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -124,7 +138,36 @@
   <div class="album py-5 bg-light">
     <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <?php
+      if($result->num_rows>0){
+        ?>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <?php
+        while($row = $result->fetch_assoc()){
+          ?>
+          
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+
+        }
+        
+      }
+      ?>
+
+      <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
@@ -264,7 +307,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -277,7 +320,7 @@
       <a href="#">Back to top</a>
     </p>
     <p>
-      <a href="contact.html">Contattaci!</a>
+      <a href="./login/logout.php">Contattaci!</a>
     </p>
     </div>
 </footer>

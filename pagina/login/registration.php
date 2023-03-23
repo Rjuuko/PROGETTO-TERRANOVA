@@ -3,7 +3,7 @@
     require("../../config.php");
     if(!($_REQUEST['passwd'] === $_REQUEST['passwdconf'])){
 
-         header("location: ./registration_form.php?test=1");
+         header("location: ../register.php?e=2");
          exit;
      }
 
