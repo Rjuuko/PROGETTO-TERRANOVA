@@ -4,13 +4,18 @@
     header("Location: login.php");
   }
   require("../config.php");
-  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
+  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale, P.RagSoc FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
   $stmt = $connessione->prepare($sql); 
   $stmt->bind_param("s", $_SESSION['email']);
   $stmt->execute();
   $result = $stmt->get_result();
-
- 
+  $row = mysqli_fetch_assoc($result);
+  $temp = explode(" ", $row['RagSoc']);
+  $name = "";
+  for($i = 0; $i < sizeof($temp); $i++){
+    $name .=  ucfirst(strtolower($temp[$i]));
+    $name .= " ";
+  }
 
 ?>
 <!doctype html>
@@ -117,7 +122,7 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Lista Contratti di...</h1>
+        <h1 class="fw-light">Lista Contratti di <?= $name?></h1>
         <p class="lead text-muted">Qui sotto troverai la lista di tutti i contratti stipulati, sono ancora modificabili!</p>
         <p>
           <a href="#" class="btn btn-primary my-2">Rimuovi un contratto</a>
