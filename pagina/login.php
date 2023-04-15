@@ -56,7 +56,7 @@
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
               <div class="card-body py-5 px-md-5">
-                <form method="POST" action='login/authentication.php' onSubmit="return checkLogin(this)">
+                <form method="POST" action='login/authentication.php' >
                     <legend>
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <h1 class="my-5 display-3 fw-bold ls-tight">Login
@@ -124,7 +124,7 @@
 
   <script>
       function displayalert(){
-        let check = <?php echo  isset($_REQUEST['newAcc']);?> 
+        let check = <?= isset($_REQUEST['newAcc']);?> 
         console.log(check)
         if(check){
           alert("Account creato con successo!");

@@ -10,12 +10,16 @@
   $stmt->execute();
   $result = $stmt->get_result();
   $row = mysqli_fetch_assoc($result);
+  if(empty($row['RagSoc'])){
+    header("Location: addInfo.php");
+  }
   $temp = explode(" ", $row['RagSoc']);
   $name = "";
   for($i = 0; $i < sizeof($temp); $i++){
     $name .=  ucfirst(strtolower($temp[$i]));
     $name .= " ";
   }
+  echo $_SESSION['status'];
 
 ?>
 <!doctype html>

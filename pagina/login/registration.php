@@ -20,14 +20,12 @@
         exit;
     }
 
-    $stmt = $connessione->prepare("INSERT INTO login(email, password) VALUES (?, ?)");
+    $stmt = $connessione->prepare("INSERT INTO login(email, password, status) VALUES (?, ?, ?)");
     $passwd =  password_hash($password, PASSWORD_DEFAULT); // creo la password criptata
 
-    echo $email;
-    echo $passwd;
-    $stmt->bind_param("ss", $email, $passwd);
+    $status = 0;
+    $stmt->bind_param("ssi", $email, $passwd, $status);
 
     $stmt->execute();
-
-    header("Location:../login.php?newAcc=1")
+    header("Location: email.php");
 ?>
