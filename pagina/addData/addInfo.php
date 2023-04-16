@@ -1,8 +1,35 @@
 <?php
     require("../../config.php");
-    $attrList = array("Cognome", "Nome", "RagSoc", "PIVA", "CFisc", "Indirizzo", "Civico", "CAP", "Localita", "Provincia", "Nazione", "NumeroTelefonico", "Email");
+    session_start();
+    if(isset($_SESSION['email'])){
+        echo "?";
+        //header("Location: ../login.php");
+    }
+    //$attrList = array("Cognome", "Nome", "RagSoc", "PIVA", "CFisc", "Indirizzo", "Civico", "CAP", "Localita", "Provincia", "Nazione", "NumeroTelefonico", "Email");
+    if(isset($_POST['Indirizzo'])){
+        if(isset($_POST['nome'])){
+            $nome = $connessione->real_escape_string($_POST['nome']);
+            $cognome = $connessione->real_escape_string($_POST['cognome']);
+            $RagSoc = $connessione->real_escape_string($cognome . $nome);
+        }else{
+            $PIVA = $connessione->real_escape_string($_POST['Piva']);
+        }
+        $CFisc = $connessione->real_escape_string($_POST['cfisc']);
+        $Indirizzo = $connessione->real_escape_string($_POST['Indirizzo']);
+        $Civico = $connessione->real_escape_string($_POST['Civico']);
+        $CAP = $connessione->real_escape_string($_POST['CAP']);
+        $Localita = $connessione->real_escape_string($_POST['Localita']);
+        $Provincia = $connessione->real_escape_string($_POST['Province']);
+        $Nazione = $connessione->real_escape_string($_POST['Country']);
+        $NumeroTelefonico = $connessione->real_escape_string($_POST['NTel']);
+        $email = $connessione->real_escape_string($_SESSION['email']);
 
 
+        $sql = " INSERT INTO `persone` (`Cognome`, `Nome`, `RagSoc`, `PIVA`, `CFisc`, `Indirizzo`, `Civico`, `CAP`, `Localita`, `Provincia`, `Nazione`, `NumeroTelefonico`, `Email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $connessione->prepare($sql);
+        $stmt->bind_param("ssssssissssss", $cognome, $nome, $RagSoc, $PIVA, $CFisc, $Indirizzo, $Civico, $CAP, $Localita, $Provincia, $Nazione, $NumeroTelefonico, $email);
+        $stmt->execute();
+    }   
 
 
 ?>
@@ -38,8 +65,8 @@
             <label for="cognome" class="private"> Cognome </label>
             <input type="text" name="cognnome" id="cognnome" placeholder="cognome" class="private">
             
-            <label for="cfisc" class="private"> Codice Fiscale </label>
-            <input type="text" name="cfisc" id="cfisc" placeholder="Codice Fiscale" class="private">
+            <label for="cfisc"> Codice Fiscale </label>
+            <input type="text" name="cfisc" id="cfisc" placeholder="Codice Fiscale">
             
             <label for="RagSoc" class="company"> Nome azienda </label>
             <input type="text" name="RagSoc" id="RagSoc" placeholder="Nome Azienda" class="company">
@@ -53,6 +80,10 @@
             <label for="Civico"> Civico </label>
             <input type="text" name="Civico" id="Civico" placeholder="Civico">
             
+            <label for="CAP"> CAP </label>
+            <input type ="text" name="CAP" id="CAP" placeholder="CAP">
+
+
             <label for="Loc"> Località </label>
                 <!-- To be replaced with a dropdown select -->
             <input type="text" name="Loc" id="Loc" placeholder="Loc"> 
