@@ -5,8 +5,10 @@ function showTab(n) {
   x[n].style.display = "block";
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
   } else {
-    document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("prevBtn").style.display = "inline";
+    document.getElementById("nextBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
@@ -18,7 +20,6 @@ function showTab(n) {
 
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
-  if (n == 1 ) return false;
   x[currentTab].style.display = "none";
   currentTab = currentTab + n;
   if (currentTab >= x.length) {
@@ -35,4 +36,20 @@ function fixStepIndicator(n) {
     x[i].className = x[i].className.replace(" active", "");
   }
   x[n].className += " active";
+}
+
+function isCompany(id){
+  if(id == 1){
+    let x = document.getElementsByClassName("private")
+    for(let i = 0; i < x.length; i++){
+      x[i].style.display = "none";
+    }
+    
+  }else{
+    let x = document.getElementsByClassName("company");
+    for(let i = 0; i < x.length; i++){
+      x[i].style.display = "none";
+    }
+  }
+  nextPrev(1);
 }

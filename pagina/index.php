@@ -11,7 +11,7 @@
   $result = $stmt->get_result();
   $row = mysqli_fetch_assoc($result);
   if(empty($row['RagSoc'])){
-    header("Location: addInfo.php");
+    header("Location: addData/addInfo.php");
   }
   $temp = explode(" ", $row['RagSoc']);
   $name = "";
