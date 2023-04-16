@@ -1,4 +1,4 @@
-<select id="province">
+
     <option value="”ag”">agrigento</option>
     <option value="”al”">alessandria</option>
     <option value="”an”">ancona</option>
@@ -109,4 +109,3 @@
     <option value="”vv”">vibo valentia</option>
     <option value="”vi”">vicenza</option>
     <option value="”vt”">viterbo</option>
-</select>

@@ -1,25 +1,36 @@
 <?php
   session_start();
+  require("../config.php");
+
   if(!isset($_SESSION['email'])){
     header("Location: login.php");
   }
-  require("../config.php");
-  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale, P.RagSoc FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
+
+  $sql = "SELECT RagSoc FROM persone WHERE email = ?";
+  $stmt = $connessione->prepare($sql);
+  $stmt->bind_param("s", $_SESSION['email']);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $row = mysqli_fetch_assoc($result);
+  $RagSoc = $row['RagSoc'];
+  if(!isset($RagSoc)){
+    header("Location: addData/addInfo.php");
+  }
+  
+
+ 
+  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale, RagSoc FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
   $stmt = $connessione->prepare($sql); 
   $stmt->bind_param("s", $_SESSION['email']);
   $stmt->execute();
   $result = $stmt->get_result();
   $row = mysqli_fetch_assoc($result);
-  if(empty($row['RagSoc'])){
-    header("Location: addData/addInfo.php");
-  }
-  $temp = explode(" ", $row['RagSoc']);
+  $temp = explode(" ", $RagSoc);
   $name = "";
   for($i = 0; $i < sizeof($temp); $i++){
     $name .=  ucfirst(strtolower($temp[$i]));
     $name .= " ";
   }
-  echo $_SESSION['status'];
 
 ?>
 <!doctype html>

@@ -27,5 +27,6 @@
     $stmt->bind_param("ssi", $email, $passwd, $status);
 
     $stmt->execute();
+    $email = $_REQUEST['email'];
     header("Location: email.php");
 ?>

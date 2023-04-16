@@ -3,7 +3,6 @@
     if(empty($email)){
         $email = $_SESSION['email'];
     }
-    echo $email;
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;

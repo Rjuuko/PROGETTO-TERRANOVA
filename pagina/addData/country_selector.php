@@ -1,4 +1,4 @@
-<select name="country" class="form-control" id="country">
+
     <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
     <optgroup id="country-optgroup-Africa" label="Africa">
         <option value="DZ" label="Algeria">Algeria</option>
@@ -262,4 +262,4 @@
         <option value="VU" label="Vanuatu">Vanuatu</option>
         <option value="WF" label="Wallis and Futuna">Wallis and Futuna</option>
     </optgroup>
-</select>
+
