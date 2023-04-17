@@ -63,7 +63,7 @@
         $stmt3->bind_param("ssssssss", $row['idAnagrafica'], $RagSoc, $IndirizzoS, $CivicoS, $CAPSede, $LocalitaS, $ProvinciaS, $NazioneS);
         $stmt3->execute();
         
-        //header("Location: ../index.php");
+        header("Location: ../index.php");
     }   
 
 
