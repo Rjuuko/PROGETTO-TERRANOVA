@@ -30,26 +30,14 @@ function nextPrev(n) {
 }
 
 
-function fixStepIndicator(n) {
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  x[n].className += " active";
-}
-
 function isCompany(id){
   if(id == 1){
-    let x = document.getElementsByClassName("private")
-    for(let i = 0; i < x.length; i++){
-      x[i].style.display = "none";
-    }
-    
+    document.getElementById("private").style.display = "none";
+    document.getElementById("company").style.display = "inline";
+   
   }else{
-    let x = document.getElementsByClassName("company");
-    for(let i = 0; i < x.length; i++){
-      x[i].style.display = "none";
-    }
+    document.getElementById("private").style.display = "inline";
+    document.getElementById("company").style.display = "none";
   }
   nextPrev(1);
 }

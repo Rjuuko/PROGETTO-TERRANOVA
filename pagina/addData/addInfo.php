@@ -126,22 +126,22 @@
                         </div>
                         <!-- Seconda pagina dove l'utente dovrà immettere i propri dati -->
                         <div class="tab"> 
-                            <div class="private">
+                            <div id="private">
                                 <label for="nome" > Nome* </label> <br>
-                                <input class="private form-control" type="text" name="nome" id="nome" placeholder="Nome" > 
+                                <input class=" form-control" type="text" name="nome" id="nome" placeholder="Nome" > 
                                 
                                 <label for="cognome" > Cognome* </label> <br>
-                                <input class="private form-control" type="text" name="cognome" id="cognome" placeholder="Cognome" > 
+                                <input class=" form-control" type="text" name="cognome" id="cognome" placeholder="Cognome" > 
                             </div>
                             
                             <label for="cfisc" > Codice Fiscale </label> <br>
                             <input class="form-control" type="text" name="cfisc" id="cfisc" placeholder="Codice Fiscale"> 
-                            <div class="company">
+                            <div id="company">
                                 <label for="RagSoc" > Nome azienda *</label> <br>
-                                <input class="company form-control" type="text" name="RagSoc" id="RagSoc" placeholder="Nome Azienda" > 
+                                <input class=" form-control" type="text" name="RagSoc" id="RagSoc" placeholder="Nome Azienda" > 
 
                                 <label for="Piva" > Partita IVA*</label> <br>
-                                <input class="company form-control" type="text" name="Piva" id="Piva" placeholder="Partita IVA"> 
+                                <input class=" form-control" type="text" name="Piva" id="Piva" placeholder="Partita IVA"> 
                             </div>
                             <label for="Indirizzo"> Indirizzo* </label> <br>
                             <input class="form-control" type="text" name="Indirizzo" id="Indirizzo" placeholder="Indirizzo" required> 
