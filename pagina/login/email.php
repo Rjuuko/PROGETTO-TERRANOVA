@@ -1,8 +1,6 @@
 <?php
     session_start();
-    if(empty($email)){
-        $email = $_SESSION['email'];
-    }
+    
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
@@ -18,6 +16,7 @@
     $mail = new PHPMailer(true);
     $code = substr(md5(uniqid(rand(), true)), 16, 16);
     $_SESSION['code'] = $code;
+    $email = $_SESSION['email'];
     try {
         //Server settings                    //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP

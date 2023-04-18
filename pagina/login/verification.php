@@ -8,7 +8,7 @@
                 echo $_SESSION['email'];
                 $stmt->bind_param("s", $_SESSION['email']);
                 $stmt->execute();
-                header("Location: ../login.php");
+                header("Location: ../index.php");
             }else{
                 header("Location: verification.php?e=1");
             }

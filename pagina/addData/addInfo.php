@@ -1,9 +1,9 @@
 <?php
+    
     require("../../config.php");
     session_start();
     if(!isset($_SESSION['email'])){
-        echo "?";
-        //header("Location: ../login.php");
+        header("Location: ../login.php");
     }
     //$attrList = array("Cognome", "Nome", "RagSoc", "PIVA", "CFisc", "Indirizzo", "Civico", "CAP", "Localita", "Provincia", "Nazione", "NumeroTelefonico", "Email");
     if(isset($_POST['Indirizzo'])){
@@ -55,6 +55,7 @@
         $ProvinciaS = $_POST['provinceSede'];
         $NazioneS = $_POST['countrySede'];
 
+        $_SESSION['IDA'] = $row['idAnagrafica'];
         if(empty($IndirizzoS) || empty($CivicoS) || empty($CAPSede) || empty($LocalitaS) || empty($ProvinciaS) || empty($NazioneS)){
             header("Location: addInfo.php");
         }
