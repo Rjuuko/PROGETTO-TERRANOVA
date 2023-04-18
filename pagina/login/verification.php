@@ -23,7 +23,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>FIVEHOUSE | Login</title>
+    <title>Verification</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
