@@ -125,7 +125,7 @@
             <p style=color:lightgrey>
             <li><a href="#" class="nav-link px-2 link-light">Profile</a></li>
             <li><a href="#" class="nav-link px-2 link-light">Settings</a></li>
-            <li><a href="./login/logout.php" class="nav-link px-2 link-light">Log Out</a></li>
+            <li><a href="./AddData/crea.html" class="nav-link px-2 link-light">Log Out</a></li>
           </p>
           </ul>
         </div>
