@@ -1,6 +1,6 @@
 <?php
     session_start();
-    
+  
     require("../../config.php");
 
     $sql = "SELECT RagSoc FROM persone WHERE email = '" . $_SESSION['email'] . "';";
@@ -69,12 +69,14 @@
 
         $mail->send();
 
-        if($txtCode == 1 || $textCode == 3){
+        if($txtCode == 1){
             header("Location: verification.php");
-        }else if ($textCode == 2){
+        }else if ($txtCode == 2){
             header("Location: email.php?text=4");
-        }else{
+        }elseif($txtCode == 4){
             header("Location: ../index.php");
+        }elseif($txtCode == 3){
+            header("Location: verification.php?d=1");
         }
         
     } catch (Exception $e) {

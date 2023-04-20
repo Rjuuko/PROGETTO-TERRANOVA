@@ -8,7 +8,12 @@
                 echo $_SESSION['email'];
                 $stmt->bind_param("s", $_SESSION['email']);
                 $stmt->execute();
+                if(isset($_GET['d'])){
+                    header("Location: ../addData/deleteContract.php");
+                }
                 header("Location: ../index.php");
+                
+                
             }else{
                 header("Location: verification.php?e=1");
             }
@@ -54,7 +59,7 @@
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
             <div class=form-group>
 
-            <p style=font-size:large style=margin-top:2vw> Controlla la posta elettronica e incolla il codice ricevuto nel box qui sotto </p>
+            <p style=font-size:large style=margin-top:2vw> Controlla la posta elettronica e incolla il codice ricevuto nel box qui sotto <?php if(isset($_GET['d'])){ echo " per eliminare definitivamente il tuo contratto";} ?></p>
             <?php 
                 if(isset($_REQUEST['e'])){
                     if($_REQUEST['e'] == 1){

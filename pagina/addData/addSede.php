@@ -5,7 +5,7 @@
         header("Location: ../login.php");
     }
 
-    if(isset($_POST['IndirizzoSdee'])){
+    if(isset($_POST['IndirizzoSede'])){
 
     
     $IndirizzoS = $_POST['IndirizzoSede'];
@@ -15,14 +15,19 @@
     $ProvinciaS = $_POST['provinceSede'];
     $NazioneS = $_POST['countrySede'];
 
-    $_SESSION['IDA'] = $row['idAnagrafica'];
-    if(empty($IndirizzoS) || empty($CivicoS) || empty($CAPSede) || empty($LocalitaS) || empty($ProvinciaS) || empty($NazioneS)){
-        header("Location: addInfo.php");
-    }
+    echo $IndirizzoS . '<br>';
+    echo $CivicoS . '<br>';
+    echo $CAPSede . '<br>';
+    echo $LocalitaS . '<br>';
+    echo $ProvinciaS . '<br>';
+    echo $NazioneS . '<br>';
+    echo $_SESSION['IDA'] . '<br>';
+    echo $_SESSION['RagSoc'] . '<br>';
     $sql = "INSERT INTO Sede (`IDAnagrafica`, `Descrizione`, `Indirizzo`, `Civico`, `CAP`, `Localita`, `Provincia`, `Nazione`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt3 = $connessione->prepare($sql);
-    $stmt3->bind_param("ssssssss", $row['idAnagrafica'], $RagSoc, $IndirizzoS, $CivicoS, $CAPSede, $LocalitaS, $ProvinciaS, $NazioneS);
+    $stmt3->bind_param("ssssssss", $_SESSION['IDA'], $_SESSION['RagSoc'], $IndirizzoS, $CivicoS, $CAPSede, $LocalitaS, $ProvinciaS, $NazioneS);
     $stmt3->execute();
+    //header("Location: ../index.php");
     }
 ?>
 
@@ -45,9 +50,6 @@
 <link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
     <style>
-        .tab{
-            display: none;
-        }
         #company{
             .form.control;
         }
@@ -58,49 +60,53 @@
 
     
 </head>    
-<body>
-    
-<section class="section" >
+<body class="card">
+    <section class="section" >
     <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
-      <div class="container align-items-center">
+      <div class="container">
         <div class="row gx-lg-5 align-items-center">
-
+          <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
-              <div class="card-body py-5 px-md-5" style="align-content:center">
-                <form action="" method="POST">
-                    <div class="tab"> Inserisci i dati della sede: <br>
-
-                        <label for="IndirizzoSede"> Indirizzo* </label> <br>
-                        <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" required> 
-
-                        <label for="CivicoSede"> Civico* </label> <br>
-                        <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" required>
-
-                        <label for="CAPSede"> CAP* </label> <br>
-                        <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" required> 
-
-                        <label for="LocSede"> Località* </label> <br>
-                            <!-- To be replaced with a dropdown select -->
-                        <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="LocSede" required>  
-
-                        <label for="provinceSede"> Provincia* </label> <br>
-                        <!-- To be replaced with a dropdown select --> 
-                        <select id="provinceSede" class="form-control" name="provinceSede" required>
-                        <?php require("selettore_provincia.php"); ?>
-                        </select> <br>
-
-                        <label for="countrySede"> Nazione* </label> <br>
-                            <!-- To be replaced with a dropdown select -->
-                        <select name="countrySede" class="form-control" id="country" required>
-                        <?php require("country_selector.php");?>
-                        </select> <br>
+              <div class="card-body py-5 px-md-5">
+                    <legend>
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <h1 class="my-5 display-4 fw-bold ls">Dati Sede
+                            </h1>
+                          </div>
                         
-                        <input type="submit" >
-                    </div>
-        
-                            </form>
-                            </div>
+                        <form action="" method="POST">
+                        <div class="tab">  
+
+                            <label for="IndirizzoSede"> Indirizzo* </label> <br>
+                            <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" required> 
+                            
+                            <label for="CivicoSede"> Civico* </label> <br>
+                            <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" required>
+                            
+                            <label for="CAPSede"> CAP* </label> <br>
+                            <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" required> 
+
+                            <label for="LocSede"> Località* </label> <br>
+                                <!-- To be replaced with a dropdown select -->
+                            <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="Localita Sede" required>  
+                            
+                            <label for="provinceSede"> Provincia* </label> <br>
+                            <!-- To be replaced with a dropdown select --> 
+                            <select id="provinceSede" class="form-control" name="provinceSede" required>
+                            <?php require("selettore_provincia.php"); ?>
+                            </select> 
+
+                            <label for="countrySede"> Nazione* </label> <br>
+                                <!-- To be replaced with a dropdown select -->
+                            <select name="countrySede" class="form-control" id="country" required>
+                            <?php require("country_selector.php");?>
+                            </select> <br>
+                            <input type="submit" value="conferma" class="btn btn-primary btn-block mb-4">
                         </div>
+                        </form>
+
+                        </div>
+                        
                         </div>
                     </div>
                     </div>
@@ -109,5 +115,6 @@
             </div>
             </div>
         </section>
+
 </body>
 </html>

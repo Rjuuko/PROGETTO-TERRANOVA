@@ -57,14 +57,16 @@
 
         $_SESSION['IDA'] = $row['idAnagrafica'];
         if(empty($IndirizzoS) || empty($CivicoS) || empty($CAPSede) || empty($LocalitaS) || empty($ProvinciaS) || empty($NazioneS)){
-            header("Location: addInfo.php");
+            header("Location: ../index.php");
+        }else{
+            $sql = "INSERT INTO Sede (`IDAnagrafica`, `Descrizione`, `Indirizzo`, `Civico`, `CAP`, `Localita`, `Provincia`, `Nazione`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt3 = $connessione->prepare($sql);
+            $stmt3->bind_param("ssssssss", $row['idAnagrafica'], $RagSoc, $IndirizzoS, $CivicoS, $CAPSede, $LocalitaS, $ProvinciaS, $NazioneS);
+            $stmt3->execute();
+            
+            header("Location: ../index.php");
         }
-        $sql = "INSERT INTO Sede (`IDAnagrafica`, `Descrizione`, `Indirizzo`, `Civico`, `CAP`, `Localita`, `Provincia`, `Nazione`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt3 = $connessione->prepare($sql);
-        $stmt3->bind_param("ssssssss", $row['idAnagrafica'], $RagSoc, $IndirizzoS, $CivicoS, $CAPSede, $LocalitaS, $ProvinciaS, $NazioneS);
-        $stmt3->execute();
         
-        header("Location: ../index.php");
     }   
 
 
@@ -177,27 +179,27 @@
                         <div class="tab"> Inserisci i dati della sede: <br>
 
                             <label for="IndirizzoSede"> Indirizzo* </label> <br>
-                            <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" required> 
+                            <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" > 
                             
                             <label for="CivicoSede"> Civico* </label> <br>
-                            <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" required>
+                            <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" >
                             
                             <label for="CAPSede"> CAP* </label> <br>
-                            <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" required> 
+                            <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" > 
 
                             <label for="LocSede"> Località* </label> <br>
                                 <!-- To be replaced with a dropdown select -->
-                            <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="LocSede" required>  
+                            <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="Localita Sede" >  
                             
                             <label for="provinceSede"> Provincia* </label> <br>
                             <!-- To be replaced with a dropdown select --> 
-                            <select id="provinceSede" class="form-control" name="provinceSede" required>
+                            <select id="provinceSede" class="form-control" name="provinceSede" >
                             <?php require("selettore_provincia.php"); ?>
                             </select> <br>
 
                             <label for="countrySede"> Nazione* </label> <br>
                                 <!-- To be replaced with a dropdown select -->
-                            <select name="countrySede" class="form-control" id="country" required>
+                            <select name="countrySede" class="form-control" id="country" >
                             <?php require("country_selector.php");?>
                             </select> <br>
                         </div>

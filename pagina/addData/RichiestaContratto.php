@@ -51,7 +51,7 @@
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
-<body onload="displayalert()">
+<body>
 <?php 
         if(mysqli_num_rows($result) == 0 ){
             ?>
@@ -60,6 +60,8 @@
             <?php
 
         }else{
+            echo mysqli_num_rows($result);
+            echo $_SESSION['IDA'];
             header("Location: ../login/email.php?text=2");
         }
     ?>
