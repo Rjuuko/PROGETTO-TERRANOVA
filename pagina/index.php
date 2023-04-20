@@ -162,6 +162,7 @@
             <p style=color:lightgrey>
             <li><a href="profile.php" class="nav-link px-2 link-light">Profile</a></li>
             <li><a href="./login/logout.php" class="nav-link px-2 link-light">Log Out</a></li>
+            <li><a href="CarbonFootprint.php" class="nav-link px-2 link-light"> Carbon FootPrint </a></li>
           </p>
           </ul>
         </div>
