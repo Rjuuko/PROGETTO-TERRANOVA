@@ -32,14 +32,39 @@
   $stmt = $connessione->prepare($sql); 
   $stmt->bind_param("s", $_SESSION['email']);
   $stmt->execute();
-  $result = $stmt->get_result();
-  $row = mysqli_fetch_assoc($result);
+  $resultCon = $stmt->get_result();
+  $rowCon = mysqli_fetch_assoc($resultCon);
   $temp = explode(" ", $RagSoc);
   $name = "";
   for($i = 0; $i < sizeof($temp); $i++){
     $name .=  ucfirst(strtolower($temp[$i]));
     $name .= " ";
   }
+
+  $sql = "SELECT IDSede FROM sede WHERE IDAnagrafica = ?";
+  $stmt = $connessione->prepare($sql);
+  $stmt->bind_param("s", $_SESSION['IDA']);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+    $sedeid = $row['IDSede'];
+    $sql = "SELECT * FROM contratti AS C JOIN sede AS S ON C.IDSede = S.IDSede WHERE S.IDSede = ? ";
+    $stmt = $connessione->prepare($sql);
+    $stmt->bind_param("s", $sedeid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $check = mysqli_num_rows($result);
+    $data = mysqli_fetch_assoc($result);
+  }
+
+
+  
+
+  $sql = "SELECT S.Descrizione AS Descrizione, S.Indirizzo AS Indirizzo FROM contatti AS C JOIN contratti AS CO ON C.IDContratto = CO.IDRigaContratto JOIN persone AS P ON C.IDAnagraficaContatto = P.IDAnagrafica JOIN sede AS S ON CO.IDSede = S.IDSede WHERE P.email = '" . $_SESSION['email'] . "';";
+  $contatti = $connessione->query($sql);
+
+
 
 ?>
 <!doctype html>
@@ -137,15 +162,27 @@
     </header>
 
 <main>
-
+      
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
+        <?php 
+        if($_SESSION['level'] == 1){
+          ?>
+            <h1 class="fw-light">Ciao Admin! </h1>
+            <p class="lead text-muted">Aggiungi contratti qui!</p>
+          <a href="./addData/addContract.php" class="btn btn-primary my-3"> Aggiungi contratto </a>
+          <?php
+        }else{
+
+        
+        ?>
         <h1 class="fw-light">Lista Contratti di <?= $name?></h1>
-        <p class="lead text-muted">Qui sotto troverai la lista di tutti i contratti stipulati, sono ancora modificabili!</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Rimuovi un contratto</a>
-        </p>
+        <p class="lead text-muted">Qui sotto troverai la lista di tutti i contratti stipulati</p>
+        
+       <?php
+        }
+        ?>
       </div>
     </div>
   </section>
@@ -154,22 +191,24 @@
     <div class="container">
 
       <?php
-      if($result->num_rows>0){
+      if($_SESSION['level'] != 1){
+      if($resultCon->num_rows>0){
         ?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php
-        while($row = $result->fetch_assoc()){
+        while($row = $resultCon->fetch_assoc()){
           ?>
           
           <div class="col">
             <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $row['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $row['Indirizzo']?></text></svg>
               <div class="card-body">
                 <p class="card-text"></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Disdici</button>
                   </div>
                 </div>
               </div>
@@ -179,150 +218,39 @@
 
         }
         
+      }else{
+        ?>
+          <h3 style="text-align:center;"> Sembra che tu non abbia contratti, aggiungine uno ora! </h1>
+          <a href="" class="btn btn-primary my-3"> Richiedi un Contratto</a>
+        <?php
+        
+      }
+    }
+      if(mysqli_num_rows($contatti) > 0){
+        echo"<h1> Contatti</h1>";
+        while($row = $contatti->fetch_assoc()){
+
+        
+        ?>
+        
+        <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $row['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $row['Indirizzo']?></text></svg>
+              <div class="card-body">
+                <p class="card-text"> Di <?= $row['Descrizione']?></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+        }
       }
       ?>
-
-      <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">PROVA TEST</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
+        
       </div>
     </div>
   </div>

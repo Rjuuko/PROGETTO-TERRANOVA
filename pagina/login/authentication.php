@@ -14,6 +14,7 @@
         if(mysqli_num_rows($result) != 0){ // guardo se risulta un username associato
             $_SESSION['email'] = $_REQUEST['email'];
             $_SESSION['status'] = $row['status'];
+            $_SESSION['level'] = $row['isAdmin'];
 
             if($_SESSION['status'] == 0){
                 header("Location: email.php");
