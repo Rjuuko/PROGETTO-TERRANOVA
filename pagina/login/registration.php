@@ -29,6 +29,6 @@
     $stmt->execute();
     $_SESSION['email'] = $_REQUEST['email'];
     $_SESSION['level'] = 0;
-    header("Location: email.php");
+    header("Location: email.php?text=1");
     //header("Location: ../login.php");
 ?>

@@ -33,36 +33,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
+
+    
+
+<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Section: Design Block -->
+    <style>
+        .tab{
+            display: none;
+        }
+        #company{
+            .form.control;
+        }
+        #private{
+            .form.control;
+        }
+    </style>
+
+    
+</head>    
 <body>
-    <form action="" method="POST">
-        <div class="tab"> Inserisci i dati della sede: <br>
+    
+<section class="section" >
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container align-items-center">
+        <div class="row gx-lg-5 align-items-center">
 
-            <label for="IndirizzoSede"> Indirizzo* </label> <br>
-            <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" required> 
+            <div class="card">
+              <div class="card-body py-5 px-md-5" style="align-content:center">
+                <form action="" method="POST">
+                    <div class="tab"> Inserisci i dati della sede: <br>
 
-            <label for="CivicoSede"> Civico* </label> <br>
-            <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" required>
+                        <label for="IndirizzoSede"> Indirizzo* </label> <br>
+                        <input class="form-control"  type="text" name="IndirizzoSede" id="IndirizzoSede" placeholder="IndirizzoSede" required> 
 
-            <label for="CAPSede"> CAP* </label> <br>
-            <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" required> 
+                        <label for="CivicoSede"> Civico* </label> <br>
+                        <input class="form-control"  type="text" name="CivicoSede" id="CivicoSede" placeholder="CivicoSede" required>
 
-            <label for="LocSede"> Località* </label> <br>
-                <!-- To be replaced with a dropdown select -->
-            <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="LocSede" required>  
+                        <label for="CAPSede"> CAP* </label> <br>
+                        <input class="form-control" type="text" name="CAPSede" id="CAPSede" placeholder="CAP" required> 
 
-            <label for="provinceSede"> Provincia* </label> <br>
-            <!-- To be replaced with a dropdown select --> 
-            <select id="provinceSede" class="form-control" name="provinceSede" required>
-            <?php require("selettore_provincia.php"); ?>
-            </select> <br>
+                        <label for="LocSede"> Località* </label> <br>
+                            <!-- To be replaced with a dropdown select -->
+                        <input class="form-control"  type="text" name="LocSede" id="LocSede" placeholder="LocSede" required>  
 
-            <label for="countrySede"> Nazione* </label> <br>
-                <!-- To be replaced with a dropdown select -->
-            <select name="countrySede" class="form-control" id="country" required>
-            <?php require("country_selector.php");?>
-            </select> <br>
-        </div>
-    </form>
+                        <label for="provinceSede"> Provincia* </label> <br>
+                        <!-- To be replaced with a dropdown select --> 
+                        <select id="provinceSede" class="form-control" name="provinceSede" required>
+                        <?php require("selettore_provincia.php"); ?>
+                        </select> <br>
+
+                        <label for="countrySede"> Nazione* </label> <br>
+                            <!-- To be replaced with a dropdown select -->
+                        <select name="countrySede" class="form-control" id="country" required>
+                        <?php require("country_selector.php");?>
+                        </select> <br>
+                        
+                        <input type="submit" >
+                    </div>
+        
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
 </body>
 </html>

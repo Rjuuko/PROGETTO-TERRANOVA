@@ -17,7 +17,7 @@
             $_SESSION['level'] = $row['isAdmin'];
 
             if($_SESSION['status'] == 0){
-                header("Location: email.php");
+                header("Location: email.php?text=1");
                 die();
 
             }

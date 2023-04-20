@@ -1,6 +1,11 @@
 <?php
     session_start();
     
+    require("../../config.php");
+
+    $sql = "SELECT RagSoc FROM persone WHERE email = '" . $_SESSION['email'] . "';";
+    $result = $connessione->query($sql);
+    $row = mysqli_fetch_assoc($result);
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
@@ -12,11 +17,35 @@
     require 'C:\xampp2\php\pear\PHPMailer-master\src\SMTP.php';
 
 
+    $txtCode = $_GET['text'];
+    if($txtCode == 1){
+        $Body = 'Ecco il codice di verifica <b>' . $code. '</b>';
+    }
     //Create an instance; passing `true` enables exceptions
     $mail = new PHPMailer(true);
     $code = substr(md5(uniqid(rand(), true)), 16, 16);
     $_SESSION['code'] = $code;
     $email = $_SESSION['email'];
+
+    $txtCode = $_GET['text'];
+    if($txtCode == 1){
+        $Sub = 'Codice di verifica';
+        $Body = 'Ecco il codice di verifica <b>' . $code. '</b>';
+        $Alt = 'Ecco il codice di verifica' . $code;
+    }else if($txtCode == 2){
+        $Sub = 'Conferma Richiesta Contratto';
+        $Body = "E appena stata fatta una richiesta di contratto, raggiungi l'agenzia più vicina per stipularlo ";
+        $Alt = "E appena stata fatta una richiesta di contratto, raggiungi l'agenzia più vicina per stipularlo ";
+    }else if($txtCode == 3){
+        $Sub = 'Conferma Rimozione Contratto';
+        $Body = "Incolla questo codice nella schermata uscita per eliminare <b>DEFINITIVAMENTE</b> il tuo contratto" . $code;
+        $Alt = "Incolla questo codice nella schermata uscita per eliminare DEFINITIVAMENTE il tuo contratto" . $code;
+    }else if($txtCode == 4){
+        $Sub = 'Richiesta Nuovo Contratto';
+        $Body = 'E arrivata una nuova richiesta di contratto da parte di ' . $row['RagSoc'];
+        $Alt = 'E arrivata una nuova richiesta di contratto da parte di ' . $row['RagSoc'];
+        $email = "bduxbbsj@gmail.com";
+    }
     try {
         //Server settings                    //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
@@ -34,14 +63,20 @@
 
         //Contentzniczicz@gmail.co
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Codice di verifica';
-        $mail->Body    = 'Ecco il codice di verifica <b>' . $code. '</b>';
-        $mail->AltBody = 'Ecco il codice di verifica' . $code;
+        $mail->Subject = $Sub;
+        $mail->Body    = $Body;
+        $mail->AltBody = $Alt;
 
         $mail->send();
 
-
-        header("Location: verification.php");
+        if($txtCode == 1 || $textCode == 3){
+            header("Location: verification.php");
+        }else if ($textCode == 2){
+            header("Location: email.php?text=4");
+        }else{
+            header("Location: ../index.php");
+        }
+        
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

@@ -42,7 +42,7 @@
     }
 
 
-    $result = $connessione->query("SELECT IDSede, S.Indirizzo AS Indirizzo,  RagSoc FROM sede AS S JOIN persone AS P ON S.IDAnagrafica = P.IDAnagrafica");
+    $result = $connessione->query("SELECT IDSede, S.Indirizzo AS Indirizzo,  RagSoc, S.Civico AS Civico FROM sede AS S JOIN persone AS P ON S.IDAnagrafica = P.IDAnagrafica");
 
     
 ?>
@@ -90,6 +90,7 @@
                         <!-- Seconda pagina dove l'utente dovrà immettere i propri dati -->
                         <form class="container" action="" method="POST">    
                             <center>
+                                <label for="Anag"> Persona / Sede</label>
                             <select name="Anag" class="form-control" style=width:30vw;height:3rem; id="Anag" required>                
                                 <option value="0" label="Select an option..." selected="selected"></option>
                                     <optgroup id="country-optgroup-Africa" label="Lista di nomi:">
@@ -100,7 +101,7 @@
                                     
                                     while($row = $result->fetch_assoc()){
                                         if(!empty($row['RagSoc'])){
-                                         echo "<option value=". $row['IDSede'] ."> " .$row['RagSoc'] . " - " . $row['Indirizzo']. "</option>";
+                                         echo "<option value=". $row['IDSede'] ."> " .$row['RagSoc'] . " - " . $row['Indirizzo']. " " .  $row['Civico'] . "</option>";
                                         }
                                         }
                                     }

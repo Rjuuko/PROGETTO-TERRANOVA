@@ -5,6 +5,8 @@
   if(!isset($_SESSION['email'])){
     header("Location: login.php");
   }
+
+  
   if(!isset($_SESSION['IDA'])){
     $sql = "SELECT IDAnagrafica FROM persone WHERE email = ?";
     $stmt2 = $connessione->prepare($sql);
@@ -28,12 +30,13 @@
   
 
  
-  $sql = "SELECT S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale, RagSoc FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
+  $sql = "SELECT C.IDRigaContratto AS IDRigaContratto, S.Indirizzo, C.DataRichiestaServizio, C.DataInizioValidita, C.DataFineValidita, C.DescrizioneOfferta, C.Utility, C.StatoContratto, C.TipoPagamento, C.PotenzaImp, C.PotDisp, C.EnergiaAnno, C.GasAnno, C.UsoCotturaCibi, C.ProduzioneAcquaCaldaSanitaria, C.RiscaldamentoIndividuale, C.UsoCommerciale, RagSoc FROM persone AS P JOIN sede AS S ON P.IDAnagrafica = S.IDAnagrafica JOIN contratti AS C ON S.IDSede = C.IDSede WHERE email = ?;";
   $stmt = $connessione->prepare($sql); 
   $stmt->bind_param("s", $_SESSION['email']);
   $stmt->execute();
   $resultCon = $stmt->get_result();
   $rowCon = mysqli_fetch_assoc($resultCon);
+  $IDContratto = $rowCon['IDRigaContratto'];
   $temp = explode(" ", $RagSoc);
   $name = "";
   for($i = 0; $i < sizeof($temp); $i++){
@@ -79,9 +82,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
 
-    
-
-    
+  
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -179,6 +180,7 @@
         ?>
         <h1 class="fw-light">Lista Contratti di <?= $name?></h1>
         <p class="lead text-muted">Qui sotto troverai la lista di tutti i contratti stipulati</p>
+        <a href="./addData/RichiestaContratto.php" class="btn btn-primary my-3"> Richiedi un nuovo Contratto</a>
         
        <?php
         }
@@ -206,9 +208,8 @@
                 <p class="card-text"></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Disdici</button>
+                    <a href="contract.php?id=<?= $IDContratto?>"><button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button></a>
+                    <a href="./addData/DeleteContract.php"><button type="button" class="btn btn-sm btn-outline-secondary">Disdici</button></a>
                   </div>
                 </div>
               </div>
@@ -221,7 +222,6 @@
       }else{
         ?>
           <h3 style="text-align:center;"> Sembra che tu non abbia contratti, aggiungine uno ora! </h1>
-          <a href="" class="btn btn-primary my-3"> Richiedi un Contratto</a>
         <?php
         
       }
@@ -240,7 +240,7 @@
                 <p class="card-text"> Di <?= $row['Descrizione']?></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
+                    <button href="contract.php?id=<?= $IDContratto?>"  type="button" class="btn btn-sm btn-outline-secondary">Vedi</button>
                   </div>
                 </div>
               </div>
@@ -274,3 +274,17 @@
       
   </body>
 </html>
+
+<?php
+if(isset($_REQUEST['conf']))
+{
+  if($_REQUEST['conf'] == 1){
+      $message = "Richiesta mandata, consulta l'agenzia più vicina";
+      echo "<script type='text/javascript'>alert('$message');</script>";
+
+    }
+}
+    
+    ?>
+
+    
