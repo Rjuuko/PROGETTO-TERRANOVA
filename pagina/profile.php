@@ -57,6 +57,7 @@
 <body>
     <h1> Profilo Personale </h1>
     <h3> Dettagli personali <h3>
+        
     <form method="POST" action="">
     <?php  
     for($i = 0; $i < count($data); $i++){
