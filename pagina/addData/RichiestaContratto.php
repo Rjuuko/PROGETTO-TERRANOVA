@@ -49,15 +49,23 @@
 </style>
     
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Section: Design Block -->
 <body onload="displayalert()">
 <?php 
         if(mysqli_num_rows($result) == 0 ){
-            ?>
-                <h1> Sembra che tu non abbia aggiunto una sede </h1>
-                <a href="addSede.php" class="btn btn-primary my-3">Aggiungi Dati Sede </a>
-            <?php
+             ?>
+            <div style=display:block>
+                <div style=display:flex;justify-content:center>
+                    <h1> Sembra che tu non ancora abbia aggiunto nessuna sede </h1>
+                    </div>
+                <div style=display:flex;justify-content:center>
+                <form action="addSede.php">
+                    <input class="btn btn-primary btn-block mb-4" type="submit" value="Aggiungi Dati Sede" />
+                </form>
+                </div>
+            </div>
+             <?php
 
         }else{
             header("Location: ../login/email.php?text=2");
