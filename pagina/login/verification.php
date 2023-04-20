@@ -5,17 +5,22 @@
         if(isset($_REQUEST['conf'])){
             if($_SESSION['code'] === $_REQUEST['conf']){
                 $stmt = $connessione->prepare("UPDATE login SET status = 1 WHERE email=?");
-                echo $_SESSION['email'];
                 $stmt->bind_param("s", $_SESSION['email']);
                 $stmt->execute();
-                if(isset($_GET['d'])){
+                if($_SESSION['isDel'] == 1){
+                    echo "balls";
                     header("Location: ../addData/deleteContract.php");
                 }
                 header("Location: ../index.php");
+
                 
                 
             }else{
+                if(isset($_GET['d'])){
+                    header("Location: verification.php?e=1&d=1");
+                }else{
                 header("Location: verification.php?e=1");
+                }
             }
         }
     }

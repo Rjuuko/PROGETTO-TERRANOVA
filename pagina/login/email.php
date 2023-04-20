@@ -38,8 +38,8 @@
         $Alt = "E appena stata fatta una richiesta di contratto, raggiungi l'agenzia più vicina per stipularlo ";
     }else if($txtCode == 3){
         $Sub = 'Conferma Rimozione Contratto';
-        $Body = "Incolla questo codice nella schermata uscita per eliminare <b>DEFINITIVAMENTE</b> il tuo contratto" . $code;
-        $Alt = "Incolla questo codice nella schermata uscita per eliminare DEFINITIVAMENTE il tuo contratto" . $code;
+        $Body = "Incolla questo codice nella schermata uscita per eliminare <b>DEFINITIVAMENTE</b> il tuo contratto " . $code;
+        $Alt = "Incolla questo codice nella schermata uscita per eliminare DEFINITIVAMENTE il tuo contratto " . $code;
     }else if($txtCode == 4){
         $Sub = 'Richiesta Nuovo Contratto';
         $Body = 'E arrivata una nuova richiesta di contratto da parte di ' . $row['RagSoc'];
@@ -76,6 +76,7 @@
         }elseif($txtCode == 4){
             header("Location: ../index.php");
         }elseif($txtCode == 3){
+            $_SESSION['isDel'] = 1;
             header("Location: verification.php?d=1");
         }
         

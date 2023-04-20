@@ -16,7 +16,7 @@
 
     
 
-    $data = array( "Cognome", "Nome", "PIVA", "CFisc", "Indirizzo", "Civico", "CAP", "Localita","Provincia","Nazione", "NumeroTelefonico", "Email");
+    $data = array( "Cognome", "Nome", "RagSoc", "PIVA", "CFisc", "Indirizzo", "Civico", "CAP", "Localita","Provincia","Nazione", "NumeroTelefonico", "Email");
     if(!empty($_REQUEST["Cognome"]) || !empty($_REQUEST["Nome"]) || !empty($_REQUEST["PIVA"]) || !empty($_REQUEST["CFisc"]) || !empty($_REQUEST["Indirizzo"]) || !empty($_REQUEST["Civico"]) || !empty($_REQUEST["CAP"]) || !empty($_REQUEST["Localita"]) || !empty($_REQUEST["Provincia"]) || !empty($_REQUEST["Nazione"]) || !empty($_REQUEST["NumeroTelefonico"]) || !empty($_REQUEST["Email"] )){
         for($x = 0; $x < count($data); $x++){
             $string = $data[$x];
@@ -24,7 +24,7 @@
             if(empty($_REQUEST[$string])){
                 $$string= $row[$string];
                 
-                
+            
             }else{
                 $$string= $connessione->real_escape_string($_REQUEST[$string]);
             }
@@ -34,15 +34,16 @@
             }
           
         }
-        $sql = "UPDATE `persone` SET  `Cognome` = ?, `Nome` = ?, `PIVA` =?, `CFisc` = ?, `Indirizzo` = ?, `Civico` = ?, `CAP` = ?, `Localita` = ?, `Provincia` = ?, `Nazione` = ?, `NumeroTelefonico` = ?, `Email` = ? WHERE `persone`.`IDAnagrafica` = ? ";
+
+        $sql = "UPDATE `persone` SET  `Cognome` = ?, `Nome` = ?, `RagSoc` = ?, `PIVA` =?, `CFisc` = ?, `Indirizzo` = ?, `Civico` = ?, `CAP` = ?, `Localita` = ?, `Provincia` = ?, `Nazione` = ?, `NumeroTelefonico` = ?, `Email` = ? WHERE `persone`.`IDAnagrafica` = ? ";
         $stmt = $connessione->prepare($sql);
-        $stmt->bind_param("sssssisssssss", $Cognome, $Nome, $PIVA, $CFisc, $Indirizzo, $Civico, $CAP, $Localita, $Provincia, $Nazione, $NumeroTelefonico, $Email, $_SESSION['IDA']);
+        $stmt->bind_param("ssssssisssssss", $Cognome, $Nome, $RagSoc , $PIVA, $CFisc, $Indirizzo, $Civico, $CAP, $Localita, $Provincia, $Nazione, $NumeroTelefonico, $Email, $_SESSION['IDA']);
         $stmt->execute(); 
         
     }
 
     
-    $inputType = array("s", "s", "s", "s", "s", "s", "s", "s", "sel1", "sel", "tel", "email");
+    $inputType = array("s", "s", "s", "s", "s", "s", "s", "s", "s", "sel1", "sel", "tel", "email");
 ?>
 
 

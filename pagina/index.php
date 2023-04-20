@@ -60,6 +60,7 @@
     $result = $stmt->get_result();
     $check = mysqli_num_rows($result);
     $data = mysqli_fetch_assoc($result);
+    @$_SESSION['con'] = $data['IDRigaContratto'];
   }
 
 
@@ -233,7 +234,7 @@
         }
       }else{
         ?>
-          <h3 style="text-align:center;"> Sembra che tu non abbia contratti, aggiungine uno ora! </h1>
+          <h3 style="text-align:center;"> Sembra che tu non abbia contratti, richiedine uno ora! </h1>
         <?php
         
       }
