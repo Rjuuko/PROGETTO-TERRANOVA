@@ -160,9 +160,7 @@
       </a>
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <p style=color:lightgrey>
-            <li><a href="#" class="nav-link px-2 link-light">Help</a></li>
-            <li><a href="#" class="nav-link px-2 link-light">Profile</a></li>
-            <li><a href="#" class="nav-link px-2 link-light">Settings</a></li>
+            <li><a href="profile.php" class="nav-link px-2 link-light">Profile</a></li>
             <li><a href="./login/logout.php" class="nav-link px-2 link-light">Log Out</a></li>
           </p>
           </ul>

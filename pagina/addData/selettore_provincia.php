@@ -1,4 +1,4 @@
-
+    <option selected disabled></option>
     <option value="ag">agrigento</option>
     <option value="al">alessandria</option>
     <option value="an">ancona</option>
