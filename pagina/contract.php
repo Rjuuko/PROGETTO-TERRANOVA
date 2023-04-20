@@ -35,21 +35,30 @@
         margin:0 auto;
         display:block;
         }
+        #container {
+            display: flex;
+            justify-content: space-between; /* Can be changed in the live sample */
+        }
+        /* #main{
+            display: flex;
+  justify-content: space-between;
+        } */
     </style>
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     
 </head>     
-<body class="card" style=height:100vw onload="getMinDate()">
+<body class="card" onload="getMinDate()">
 
     <section class="section" >
-    <div class="px-4 py-5 px-md-5 text-center text-lg-center" style="background-color: hsl(0, 0%, 96%)">
+    <div class="px-4 py-5 px-md-5 text-center text-lg-center" style="background-color: hsl(0, 0%, 96%);">
       <div class="container align-items-center">
         <div class="row gx-lg-5 align-items-center">
 
-            <div class="card">
-              <div class="card-body py-5 px-md-5">
+            <div class="container" id="container">
+                <div class="card" style=width:47vw>
+                    <div class="-body py-5 px-md-5">
                         <h1> Contratto </h1>
                         <form method="POST" action="./addData/addContact.php?id=<?= $Contract?>">
                             <label for="email">Email Contatto</label>
@@ -58,34 +67,39 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block mb-4" style=position:relative;align-self:center;margin-top:1.5vw>Submit</button>
                         </form>
-                        <?php
-                        for($i = 0; $i < count($data); $i++){
-                            ?>
-                            <div>
-                                <h3><?= $data[$i]?></h3>
-                                <?php
-                                    if(empty($row[$data[$i]])){
-                                        ?>
-                                        <p> /</p>
-                                        <?php
-                                    }else{
-                                        ?>
-                                        <p><?= $row[$data[$i]]?></p>
-                                        <?php
-                                    }
-                                ?>
-                                
-                            </div>
-                            <?php
-                        }
-                        ?>
-                       
                     </div>
                 </div>
+
+                <div class="card" style=width:47vw>
+                    <div class="-body py-5 px-md-5">
+                        <?php
+                        for($i = 0; $i < count($data); $i++){
+                        ?>
+                        <div>
+                            <h3><?= $data[$i]?></h3>
+                            <?php
+                                if(empty($row[$data[$i]])){
+                            ?>
+                            <p> /</p>
+                             <?php
+                                }else{
+                            ?>
+                            <p><?= $row[$data[$i]]?></p>
+                            <?php
+                             }
+                            ?>
+                                
+                        </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
-            </div>
-        </section>
+        </div>
+    </div>
+</div>
+</section>
 
     
 </body>
