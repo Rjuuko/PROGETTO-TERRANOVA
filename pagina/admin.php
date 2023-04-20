@@ -32,6 +32,7 @@
     $name .= " ";
   }
 
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -142,14 +143,7 @@
         <p>
         <div style=display:flex>
           <a href="#" class="btn btn-primary">Rimuovi un contratto</a>  
-          <select name="country" class="form-control" style=width:30vw;height:3rem; id="country" required="">                
-            <option value="0" label="Select an option..." selected="selected"></option>
-            <optgroup id="country-optgroup-Africa" label="Lista di nomi:">
-                <!-- inserire ciclo per ogni nome di persona con contratto indata sede -->
-                <option value=<?= $soggetto?> label=<?php $name ?>></option>
-            </optgroup>
-        </option>
-        </select>
+          
     </div>
   </section>
         </div>
