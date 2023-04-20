@@ -14,7 +14,7 @@ $sql = "SELECT C.EnergiaAnno FROM persone AS P JOIN sede AS S ON P.IDAnagrafica 
   $carbon_footprint = "";
 // Ottieni i dati dal form
 if(isset($_POST['trasporti'])){
-    $energia = $row['EnergiaAnno'];
+    @$energia = $row['EnergiaAnno'];
     $trasporti = $_POST['trasporti'];
     $alimentazione = $_POST['alimentazione'];
     $acquisti = $_POST['acquisti'];
@@ -32,14 +32,34 @@ if(isset($_POST['trasporti'])){
 
 
 ?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Calcolo CarbonFootprint</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
+    
+    
+ 
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Calcolo del Carbon Footprint</title>
-</head>
-<body>
-	<h1>Calcolo del Carbon Footprint</h1>
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Section: Design Block -->
+
+
+<section class="section">
+    <div class="px-4 py-5 px-md-5 text-center text-lg-center" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+
+
+              <h1>Calcolo del Carbon Footprint</h1>
 	<form action="" method="post">
 	
 		<h2>Trasporti</h2>
@@ -69,5 +89,14 @@ if(isset($_POST['trasporti'])){
 		<input type="submit" value="Calcola">
 	</form>
     <p> Il tuo carbon footprin è di <?=$carbon_footprint?>
+  
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
