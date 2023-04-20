@@ -258,14 +258,34 @@
 </main>
 
 <footer class="text-muted py-5">
-  <div class="container">
+  <div class="container" style=display:flex>
     <p class="float-end mb-1">
       <a href="#">Back to top</a>
     </p>
+    <div style=width:5vw></div>
     <p>
-      <a href="./login/logout.php">Contattaci!</a>
-    </p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+    <h6 style=margin-top:0.3vw>contatto di:</h6>
+        <a href="tel:123-456-7890" class=links>+39 012-345-5678</a>
     </div>
+    <div style=width:5vw></div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+    <h6 style=margin-top:0.3vw>contatto di:</h6>
+        <a href="tel:123-456-7890" class=links >+39 012-345-5678</a>
+    </div>
+    <div style=width:5vw></div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+    <h6 style=margin-top:0.3vw>contatto di:</h6>
+        <a href="tel:123-456-7890" class=links>+39 012-345-5678</a>
+    </div>
+    <div style=width:5vw></div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+    <h6 style=margin-top:0.3vw>email:</h6>
+        <a href="#" class=links>email@test.com</a>
+    </div>
+    
+    </p>
+  </div>
 </footer>
 
 
