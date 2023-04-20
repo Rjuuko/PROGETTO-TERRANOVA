@@ -54,45 +54,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1> Profilo Personale </h1>
-    <h3> Dettagli personali <h3>
-        
-    <form method="POST" action="">
-    <?php  
-    for($i = 0; $i < count($data); $i++){
+<body id="main" style="background-color: hsl(0, 0%, 96%);">
+<section class="section" >
+    <div class="px-4 py-5 px-md-5 text-center text-lg-center">
+      <div class="container align-items-center">
+        <div class="row gx-lg-5 align-items-center">
 
-        ?>
-         <h4> <?= $data[$i] ?><h4> 
+            <div class="container" id="container">
+                <div class="card" style=width:47vw;align-content:center>
+                    <div id="main">
+                <h1> Profilo Personale </h1><br>
+                <h3> Dettagli personali <h3><br>
+                <form method="POST" action="" style=justify-content:center>
+                <?php  
+                for($i = 0; $i < count($data); $i++){
 
-         
-        <?php
-        if($inputType[$i] == "sel"){
-            ?>
-            <select name="Nazione" class="form-control" id="Nazione" >
-            <?php require("./addData/country_selector.php");?>
-            </select> <br>
-            <?php
-        }else if($inputType[$i] == "sel1"){
-            ?>
-            <select id="Provincia" class="form-control" name="Provincia" >
-            <?php require("./addData/selettore_provincia.php"); ?>
-            </select> <br>
+                    ?>
+                    <h4> <?= $data[$i] ?><h4> 
 
-            <?php
-        }else if($inputType[$i] == "email"){
-            ?>
-            <input type="Email" id="<?= $data[$i]?>" class="form-control" name="Email" value="<?= $row[$data[$i]]?>" />
-            <?php
-        }else{
-            ?>
-            <input type="text" id="<?= $data[$i]?>" class="form-control" name="<?= $data[$i]?>" value="<?= $row[$data[$i]]?>" />
-            <?php
-        }
-    }
-   
-    ?>
-    <input type="submit">
-    </form>
+                    
+                    <?php
+                    if($inputType[$i] == "sel"){
+                        ?>
+                        <select name="Nazione" class="form-control" id="Nazione" style=justify-self:center >
+                        <?php require("./addData/country_selector.php");?>
+                        </select> <br>
+                        <?php
+                    }else if($inputType[$i] == "sel1"){
+                        ?>
+                        <select id="Provincia" class="form-control" name="Provincia" >
+                        <?php require("./addData/selettore_provincia.php"); ?>
+                        </select> <br>
+
+                        <?php
+                    }else if($inputType[$i] == "email"){
+                        ?>
+                        <input type="Email" id="<?= $data[$i]?>" class="form-control" name="Email" value="<?= $row[$data[$i]]?> " /><br>
+                        <?php
+                    }else{
+                        ?>
+                        <input type="text" class="form-control" id="<?= $data[$i]?>" name="<?= $data[$i]?>" value="<?= $row[$data[$i]]?>" />
+                        <?php
+                    }
+                }
+            
+                ?>
+                <br>
+                <div style=justify-content:center><input type="submit" class="btn btn-primary btn-block mb-4">
+                </form>
+                    </div>
+        </div>
+    </div>                
 </body>
 </html>
