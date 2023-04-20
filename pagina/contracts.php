@@ -42,8 +42,10 @@
     <?php if($check > 0 ){ ?>
         
     <?php }else{ ?>
+    <div style=display:block;justify-content:center;>
         <h1> Sembra che tu non abbia contratti, aggiungine uno ora! </h1>
-        <a href="./addData/addContract.php"><button> Stipula un Contratto</button></a>
+        <a href="./addData/addContract.php" class=links><button> Stipula un Contratto</button></a>
+        </div>
     <?php } ?>
 </body>
 </html>
