@@ -30,32 +30,34 @@
     <meta name="generator" content="Hugo 0.108.0">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
 
-    
+    <style>
+        input[type==email] {
+        margin:0 auto;
+        display:block;
+        }
+    </style>
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Section: Design Block -->
-
 
     
 </head>     
-<body class="card" onload="getMinDate()">
+<body class="card" style=height:100vw onload="getMinDate()">
 
     <section class="section" >
-    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="px-4 py-5 px-md-5 text-center text-lg-center" style="background-color: hsl(0, 0%, 96%)">
       <div class="container align-items-center">
         <div class="row gx-lg-5 align-items-center">
 
             <div class="card">
-              <div class="card-body py-5 px-md-5" style="align-content:center">
+              <div class="card-body py-5 px-md-5">
                         <h1> Contratto </h1>
                         <form method="POST" action="./addData/addContact.php?id=<?= $Contract?>">
                             <label for="email">Email Contatto</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                            <input type="submit">
+                            <div style=display:flex;justify-content:center>
+                                <input type="email" id="email" name="email" class="form-control" style=max-width:20vw;max-height:3vw; required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mb-4" style=position:relative;align-self:center;margin-top:1.5vw>Submit</button>
                         </form>
-
-                        <!-- Prima pagina del form dove si sceglie se si è azienda o privato -->
-                        <!-- Seconda pagina dove l'utente dovrà ismmettere i propri dati -->
                         <?php
                         for($i = 0; $i < count($data); $i++){
                             ?>
