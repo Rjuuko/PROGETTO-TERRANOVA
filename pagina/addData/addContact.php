@@ -18,5 +18,5 @@
     $stmt = $connessione->prepare($sql);
     $stmt->bind_param("ii", $IDContratto, $IDAnagrafica);
     $stmt->execute();
-    
+    header("Location: ../login/email.php?text=1");
 ?>

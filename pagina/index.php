@@ -60,7 +60,7 @@
     $result = $stmt->get_result();
     $check = mysqli_num_rows($result);
     $data = mysqli_fetch_assoc($result);
-    @$_SESSION['con'] = $data['IDRigaContratto'];
+    $_SESSION['con'] = $data['IDRigaContratto'];
   }
 
 
