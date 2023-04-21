@@ -1,23 +1,21 @@
 <?php
   session_start();
   require("../config.php");
-  unset($_SESSION['d']);
-  
+
   if(!isset($_SESSION['email'])){
     header("Location: login.php");
   }
 
-
+  
   if(!isset($_SESSION['IDA'])){
-    $sql = "SELECT IDAnagrafica, RagSoc FROM persone WHERE email = ?";
+    $sql = "SELECT IDAnagrafica FROM persone WHERE email = ?";
     $stmt2 = $connessione->prepare($sql);
     $stmt2->bind_param("s", $_SESSION['email']);
     $stmt2->execute();
     $result = $stmt2->get_result();
     $row = mysqli_fetch_assoc($result);
-
     $_SESSION['IDA'] = $row['IDAnagrafica'];
-    $_SESSION['RagSoc'] = $row['RagSoc'];
+    
   }
   $sql = "SELECT RagSoc FROM persone WHERE email = ?";
   $stmt = $connessione->prepare($sql);
@@ -37,7 +35,8 @@
   $stmt->bind_param("s", $_SESSION['email']);
   $stmt->execute();
   $resultCon = $stmt->get_result();
-
+  $rowCon = mysqli_fetch_assoc($resultCon);
+  $IDContratto = $rowCon['IDRigaContratto'];
   $temp = explode(" ", $RagSoc);
   $name = "";
   for($i = 0; $i < sizeof($temp); $i++){
@@ -60,7 +59,6 @@
     $result = $stmt->get_result();
     $check = mysqli_num_rows($result);
     $data = mysqli_fetch_assoc($result);
-    @$_SESSION['con'] = $data['IDRigaContratto'];
   }
 
 
@@ -140,14 +138,7 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
-  <script>
-    function confDelete(id){
-      let test = confirm("Sei sicuro di voler disdire questo contratto?");
-      if(test){
-        location.replace("./login/email.php?text=3&con=" + id) 
-      }
-    }
-    </script>
+
     
   </head>
   <body>
@@ -161,9 +152,10 @@
       </a>
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <p style=color:lightgrey>
-            <li><a href="profile.php" class="nav-link px-2 link-light">Profile</a></li>
+            <li><a href="#" class="nav-link px-2 link-light">Help</a></li>
+            <li><a href="#" class="nav-link px-2 link-light">Profile</a></li>
+            <li><a href="#" class="nav-link px-2 link-light">Settings</a></li>
             <li><a href="./login/logout.php" class="nav-link px-2 link-light">Log Out</a></li>
-            <li><a href="CarbonFootprint.php" class="nav-link px-2 link-light"> Carbon FootPrint </a></li>
           </p>
           </ul>
         </div>
@@ -198,32 +190,26 @@
   </section>
 
   <div class="album py-5 bg-light">
-    <div class="container">
+    <div class="container" style=display:grid;>
 
       <?php
       if($_SESSION['level'] != 1){
-        if($resultCon->num_rows>0){
+      if($resultCon->num_rows>0){
         ?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php
-
-        
-        
-        
-        while($rowCon = $resultCon->fetch_assoc()){
-          $IDContratto = $rowCon['IDRigaContratto'];
-
+        while($row = $resultCon->fetch_assoc()){
           ?>
           
           <div class="col">
             <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $rowCon['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $rowCon['Indirizzo']?></text></svg>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $row['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $row['Indirizzo']?></text></svg>
               <div class="card-body">
                 <p class="card-text"></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="contract.php?id=<?= $IDContratto?>"><button type="button" class="btn btn-sm btn-outline-secondary">Vedi</button></a>
-                    <a onClick="confDelete(<?=$IDContratto?>)"><button type="button" class="btn btn-sm btn-outline-secondary">Disdici</button></a>
+                    <a href="./addData/DeleteContract.php"><button type="button" class="btn btn-sm btn-outline-secondary">Disdici</button></a>
                   </div>
                 </div>
               </div>
@@ -232,13 +218,14 @@
           <?php
 
         }
+        
       }else{
         ?>
-          <h3 style="text-align:center;"> Sembra che tu non abbia contratti, richiedine uno ora! </h1>
+          <h3 style="text-align:center;"> Sembra che tu non abbia contratti, aggiungine uno ora! </h1>
         <?php
         
       }
-    
+    }
       if(mysqli_num_rows($contatti) > 0){
         echo"<h1> Contatti</h1>";
         while($row = $contatti->fetch_assoc()){
@@ -262,7 +249,6 @@
           <?php
         }
       }
-    }
       ?>
         
       </div>
