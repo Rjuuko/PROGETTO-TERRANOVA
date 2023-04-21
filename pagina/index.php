@@ -202,7 +202,7 @@
           ?>
           
           <div class="col">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style=max-width:20vw>
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $row['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $row['Indirizzo']?></text></svg>
               <div class="card-body">
                 <p class="card-text"></p>
@@ -238,7 +238,7 @@
         ?>
         
         <div class="col">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm" style=max-width:20vw>
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="<?= $row['Indirizzo']?>" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><?= $row['Indirizzo']?></text></svg>
               <div class="card-body">
                 <p class="card-text"> Di <?= $row['Descrizione']?></p>
