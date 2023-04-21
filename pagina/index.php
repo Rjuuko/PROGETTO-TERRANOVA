@@ -148,7 +148,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="#" class="navbar-brand d-flex align-items-center" style=color:lightgrey>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><img src="../immagini/leaf-svgrepo-com.svg"><circle cx="12" cy="13" r="4"/></svg>
-        <strong>FiveHouse</strong>
+        <strong>Terranova</strong>
       </a>
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <p style=color:lightgrey>
@@ -191,7 +191,7 @@
 
   <div class="album py-5 bg-light">
     <div class="container" style=display:grid;>
-
+      <div>
       <?php
       if($_SESSION['level'] != 1){
       if($resultCon->num_rows>0){
@@ -226,6 +226,10 @@
         
       }
     }
+    ?>
+    </div>
+    <div>
+    <?php
       if(mysqli_num_rows($contatti) > 0){
         echo"<h1> Contatti</h1>";
         while($row = $contatti->fetch_assoc()){
@@ -250,7 +254,7 @@
         }
       }
       ?>
-        
+       </div> 
       </div>
     </div>
   </div>
