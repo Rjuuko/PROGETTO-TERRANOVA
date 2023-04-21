@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>FIVEHOUSE | Login</title>
+    <title>FIVEHOUSE | Richiesta Contratto</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
     
     

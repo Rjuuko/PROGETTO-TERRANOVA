@@ -60,7 +60,7 @@
     <meta name="generator" content="Hugo 0.108.0">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
     
-    <title>Document</title>
+    <title>FIVEHOUSE | PROFILO</title>
     <style>
         #main{
             display:grid;
